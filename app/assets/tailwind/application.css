@@ -35,6 +35,10 @@ button,
 input[type="submit"],
 a {
   @apply font-bold text-center uppercase cursor-pointer focus:bg-primary hover:bg-text hover:text-background py-2 px-6 transition-colors;
+
+  &.active {
+    @apply bg-primary text-background hover:bg-primary/70;
+  }
 }
 
 input:not([type="submit"]) {

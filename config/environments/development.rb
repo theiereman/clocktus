@@ -76,4 +76,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   config.hotwire.spark.html_extensions += %w[ haml ]
+  config.hotwire.spark.html_paths += %w[ app/components ]
 end

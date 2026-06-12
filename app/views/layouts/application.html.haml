@@ -18,8 +18,8 @@
     = flash_toasts
     .flex.h-full
       .hidden.md:block
-        = render "shared/sidebar"
+        = render SidebarComponent.new
       .m-2
         = yield
     .md:hidden
-      = render "shared/mobile/navbar"
+      = render NavbarComponent.new
