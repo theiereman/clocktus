@@ -1,13 +1,3 @@
-%div{id: dom_id(activity)}
-  %p
-    %strong Started at:
-    = activity.started_at
-
-  %p
-    %strong Ended at:
-    = activity.ended_at
-
-  %p
-    %strong User:
-    = activity.category.label
-
+.bg-primary.p-4.rounded-sm{id: dom_id(activity)}
+  %h3= activity.category.label
+  = "de #{l(activity.started_at, format: :short)} à #{l(activity.ended_at, format: :short)}"

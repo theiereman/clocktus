@@ -1,13 +1,3 @@
-%p{style: "color: green"}= notice
-
-- content_for :title, "Activities"
-
-%h1 Activities
-
-%div{id: "activities"}
+= turbo_frame_tag "activities" do
   - @activities.each do |activity|
     = render activity
-    %p
-      = link_to "Show this activity", activity
-
-= link_to "New activity", new_activity_path
