@@ -1,0 +1,10 @@
+- content_for :title, "New category"
+
+%h1 New category
+
+= render "form", activity_category: @activity_category
+
+%br
+
+%div
+  = link_to "Back to categories", activity_categories_path

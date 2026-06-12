@@ -1,0 +1,13 @@
+%div{id: dom_id(activity)}
+  %p
+    %strong Started at:
+    = activity.started_at
+
+  %p
+    %strong Ended at:
+    = activity.ended_at
+
+  %p
+    %strong User:
+    = activity.category.label
+

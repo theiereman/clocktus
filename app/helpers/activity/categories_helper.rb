@@ -1,0 +1,2 @@
+module Activity::CategoriesHelper
+end
