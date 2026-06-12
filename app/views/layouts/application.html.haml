@@ -14,6 +14,12 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body.h-screen
+  %body.h-screen.flex.flex-col
     = flash_toasts
-    = yield
+    .flex.h-full
+      .hidden.md:block
+        = render "shared/sidebar"
+      .m-2
+        = yield
+    .md:hidden
+      = render "shared/mobile/navbar"
