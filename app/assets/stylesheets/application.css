@@ -8,3 +8,26 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+@keyframes flash-toast {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.flash-toast {
+  animation: flash-toast 4s ease forwards;
+}

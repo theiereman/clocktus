@@ -15,6 +15,5 @@
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body.h-screen
-    - flash.each do |type, message|
-      %p{:class => "flash flash--#{type}"}= message
+    = flash_toasts
     = yield
