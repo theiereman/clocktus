@@ -18,6 +18,10 @@ module FlashHelper
     end
   end
 
+  def turbo_flash_toast(type, message)
+    turbo_stream.append :flash, flash_toast(type, message)
+  end
+
   private
     def flash_kind(type)
       TOAST_STYLES.key?(type.to_s) ? type.to_s : "notice"

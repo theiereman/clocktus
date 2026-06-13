@@ -1,4 +1,19 @@
 class Activity::Category < ApplicationRecord
   belongs_to :user
-  has_many :activities, dependent: :restrict_with_error
+  has_many :activities, foreign_key: "activity_category_id", dependent: :restrict_with_error
+
+  def self.create_default_categories_for(user)
+    default_categories = [
+      { label: "Lecture" },
+      { label: "Cuisine" },
+      { label: "Loisirs" },
+      { label: "Sorties" },
+      { label: "Travail" },
+      { label: "Sommeil" }
+    ]
+
+    default_categories.each do |category_attrs|
+      user.activity_categories.create(category_attrs)
+    end
+  end
 end
