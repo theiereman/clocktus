@@ -15,7 +15,9 @@ class User < ApplicationRecord
     return default_start_datetime if latest_activity_end_datetime.nil?
 
     next_datetime = latest_activity_end_datetime.to_datetime
-    return latest_activity.started_at if next_datetime.to_date >= Date.current
+    return latest_activity.started_at if next_datetime.to_date > Date.current || (next_datetime.to_date == Date.current && next_datetime.hour >= sleep_hour)
+
+
 
     if next_datetime.hour >= sleep_hour
       next_datetime = next_datetime.change({ day: latest_activity_end_datetime.day + 1, hour: wake_up_hour })

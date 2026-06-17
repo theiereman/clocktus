@@ -6,6 +6,7 @@ class Activity < ApplicationRecord
 
   validates :started_at, :category, presence: true
   validate :user_has_not_finished_day
+  validate :unique_on_timespan_for_user
 
   scope :today, -> { where(started_at: Time.current.beginning_of_day..Time.current.end_of_day) }
   scope :at, ->(date) { where(started_at: date.beginning_of_day..date.end_of_day) }
@@ -30,6 +31,15 @@ class Activity < ApplicationRecord
     return true unless user&.has_done_every_activity_for(started_at&.to_date)
 
     errors.add(:base, "L'utilisateur a déjà rempli tous les activités pour aujourd'hui")
+    false
+  end
+
+  def unique_on_timespan_for_user
+    end_timedate = started_at.to_datetime + 1.hour
+
+    return true unless user.activities.where(started_at: started_at..end_timedate).any?
+
+    errors.add(:base, "Une activité exsite déjà pour cette période.")
     false
   end
 end
