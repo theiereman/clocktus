@@ -41,6 +41,10 @@ a {
   &.active {
     @apply bg-primary text-background hover:bg-primary/70;
   }
+
+  &.disabled {
+    @apply pointer-events-none opacity-50;
+  }
 }
 
 input:not([type="submit"]) {

@@ -22,7 +22,7 @@ class User::Schedule
   end
 
   def number_of_activities_in_a_day
-    awake_duration_in_hours / Activity::DURATION_IN_HOURS
+    HOURS_IN_A_DAY / Activity::DURATION_IN_HOURS
   end
 
   private

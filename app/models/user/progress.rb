@@ -24,8 +24,8 @@ class User::Progress
     activities_per_day[date].count >= number_of_activities_in_a_day
   end
 
-  def remaining_activities_count
-    number_of_activities_in_a_day - activities.size
+  def remaining_activities_count(date:)
+    [ number_of_activities_in_a_day - activities.select { it.started_at.between?(date.beginning_of_day, date.end_of_day) }.size, 0 ].max
   end
 
   def activities_per_day
