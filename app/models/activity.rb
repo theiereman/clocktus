@@ -15,6 +15,10 @@ class Activity < ApplicationRecord
   scope :today, -> { where(started_at: Time.current.beginning_of_day..Time.current.end_of_day) }
   scope :at, ->(date) { where(started_at: date.beginning_of_day..date.end_of_day) }
 
+  def self.number_of_activities_in_a_day
+    HOURS_IN_A_DAY / DURATION_IN_HOURS
+  end
+
   private
 
   def defaults
