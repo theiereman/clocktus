@@ -20,8 +20,6 @@
         = link_to activities_path(date: @activity.started_at.to_date + 1.week), class: "tooltip py-4! #{'disabled' if @activity.started_at.to_date + 1.week > Date.current}" do 
           = lucide_icon "chevrons-right"
           %span.tooltiptext Semaine suivante
-    
-    = button_to "Marquer la nuit comme 'sommeil'", mark_night_as_sleep_path(date: @date)
 
 #categories.space-y-6
   .grid.grid-cols-2.gap-4.text-lg
@@ -37,16 +35,30 @@
     %span= @feed.remaining_activities_count(date: @date) > 0 ? "#{@feed.remaining_activities_count(date: @date)} activité(s) à renseigner" : "Toutes les activités du jour ont été renseignées"
 
   #activities.md:columns-2.gap-2
-    - @feed.slots.each do |slot|
-      - slot_color = slot.filled? && !slot.night && slot.hour != @activity.started_at.hour ? slot.activity.category.color : nil
-      .flex.gap-6.justify-between.p-4.items-center.py-2.break-inside-avoid{class: "#{"text-text/50" unless slot.filled?} #{"bg-night/90 text-white" if slot.night} #{"bg-primary text-text!" if slot.hour == @activity.started_at.hour}", style: [("background-color: #{slot_color}" if slot_color), ("color: #{contrasted_text_color(slot_color)}" if slot_color)].compact.join("; ")}
-        .font-bold.text-nowrap.flex.gap-2
-          %span= "#{slot.hour} h"
-          - if slot.night
-            = lucide_icon :moon
-          - else
-            = lucide_icon :sun
-        .flex.justify-between.items-center.text-xl{class: ("italic" unless slot.filled?)}
-          %span= slot.label
-        = link_to activities_path(datetime: DateTime.new(@date.year, @date.month, @date.day, slot.hour), activity_id: slot.activity&.id) do |form|
-          = lucide_icon :edit
+    - sleep_category = @categories.find(&:protected?)
+    - @feed.slots.chunk(&:night).each do |is_night, slots|
+      - if is_night
+        %div.relative.group.break-inside-avoid
+          %div{class: "absolute -inset-2 border-2 border-dashed border-night opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10"}
+          %div{class: "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 opacity-0 group-hover:opacity-100 transition-opacity z-20 whitespace-nowrap"}
+            = button_to 'Tout marquer comme "Sommeil"', mark_night_as_sleep_path(date: @date), class: "text-xs px-2 py-0.5 bg-night text-white border border-white/40 cursor-pointer rounded"
+          - slots.each do |slot|
+            .flex.gap-6.justify-between.p-4.items-center.py-2{class: "#{"text-text/50" unless slot.filled?} #{"bg-primary text-text!" if slot.hour == @activity.started_at.hour}", style: (slot.hour == @activity.started_at.hour ? nil : "background-color: var(--color-night); opacity: 0.9; color: white;")}
+              .font-bold.text-nowrap.flex.gap-2
+                %span= "#{slot.hour} h"
+                = lucide_icon :moon
+              .flex.justify-between.items-center.text-xl{class: ("italic" unless slot.filled?)}
+                %span= slot.label
+              = link_to activities_path(datetime: DateTime.new(@date.year, @date.month, @date.day, slot.hour), activity_id: slot.activity&.id) do
+                = lucide_icon :edit
+      - else
+        - slots.each do |slot|
+          - slot_color = slot.filled? && slot.hour != @activity.started_at.hour ? slot.activity.category.color : nil
+          .flex.gap-6.justify-between.p-4.items-center.py-2.break-inside-avoid{class: "#{"text-text/50" unless slot.filled?} #{"bg-primary text-text!" if slot.hour == @activity.started_at.hour}", style: [("background-color: #{slot_color}" if slot_color), ("color: #{contrasted_text_color(slot_color)}" if slot_color)].compact.join("; ")}
+            .font-bold.text-nowrap.flex.gap-2
+              %span= "#{slot.hour} h"
+              = lucide_icon :sun
+            .flex.justify-between.items-center.text-xl{class: ("italic" unless slot.filled?)}
+              %span= slot.label
+            = link_to activities_path(datetime: DateTime.new(@date.year, @date.month, @date.day, slot.hour), activity_id: slot.activity&.id) do
+              = lucide_icon :edit
