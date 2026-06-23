@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :settings, only: %i[ index update ]
 
   resource :calendar, only: :show
+  resource :statistics, only: :show
+  resources :settings, only: %i[ index update ]
 
   get "up" => "rails/health#show", as: :rails_health_check
 

@@ -37,5 +37,4 @@ end
 gem "tailwindcss-rails", "~> 4.4"
 gem "haml-rails"
 gem "lucide-rails", "~> 0.7.4"
-
-gem "turbo_power", "~> 0.7.0"
+gem "chartkick", "~> 5.2"

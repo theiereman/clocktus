@@ -1,0 +1,8 @@
+%h1.mb-12 Statistiques
+
+%h2 Nombre d'activités par catégorie
+.my-6= column_chart @count_per_category, colors: @colors
+
+%h2 Activités au cours du temps
+.my-6= line_chart @hours_per_category_over_time, legend: :bottom
+
