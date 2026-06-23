@@ -26,11 +26,11 @@
 #categories.space-y-6
   .grid.grid-cols-2.gap-4.text-lg
     - @categories.each do |category|
-      = form_for :activity, url: activities_path, method: :post, class: "border-5" do |form|
+      = form_for :activity, url: activities_path, method: :post do |form|
         = form.hidden_field :id, value: @activity&.id
         = form.hidden_field :activity_category_id, value: category.id
         = form.hidden_field :started_at, value: @activity.started_at
-        = form.submit category.label, class: "size-full p-6!"
+        = form.submit category.label, class: "size-full p-6! hover:bg-(--cat-hover)!", style: "background-color: #{category.color}; color: #{contrasted_text_color(category.color)}; border: 5px solid #{darken_color(category.color)}; --cat-hover: #{darken_color(category.color)}"
 
   .title
     %h2.mt-10.flex.justify-between Activités de la journée
@@ -38,14 +38,15 @@
 
   #activities.md:columns-2.gap-2
     - @feed.slots.each do |slot|
-      .flex.gap-6.justify-between.p-4.items-center.py-2.break-inside-avoid{class: "#{"text-text/50" unless slot.filled?} #{"bg-night/90 text-white" if slot.night} #{"bg-primary text-text!" if slot.hour == @activity.started_at.hour}"}
+      - slot_color = slot.filled? && !slot.night && slot.hour != @activity.started_at.hour ? slot.activity.category.color : nil
+      .flex.gap-6.justify-between.p-4.items-center.py-2.break-inside-avoid{class: "#{"text-text/50" unless slot.filled?} #{"bg-night/90 text-white" if slot.night} #{"bg-primary text-text!" if slot.hour == @activity.started_at.hour}", style: [("background-color: #{slot_color}" if slot_color), ("color: #{contrasted_text_color(slot_color)}" if slot_color)].compact.join("; ")}
         .font-bold.text-nowrap.flex.gap-2
           %span= "#{slot.hour} h"
           - if slot.night
-            = lucide_icon :moon 
+            = lucide_icon :moon
           - else
             = lucide_icon :sun
-        .flex.justify-between.text-xl{class: ("italic" unless slot.filled?)}
+        .flex.justify-between.items-center.text-xl{class: ("italic" unless slot.filled?)}
           %span= slot.label
         = link_to activities_path(datetime: DateTime.new(@date.year, @date.month, @date.day, slot.hour), activity_id: slot.activity&.id) do |form|
           = lucide_icon :edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_23_051245) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_23_070503) do
   create_table "activities", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_23_051245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "protected", default: false
+    t.string "color", default: "#6b7280"
     t.index ["user_id"], name: "index_activity_categories_on_user_id"
   end
 

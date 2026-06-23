@@ -25,6 +25,6 @@ class Activity::Category < ApplicationRecord
   private
 
   def label_immutable_when_protected
-    errors.add(:base, "Cette catégorie est protégée et ne peut pas être modifiée") if protected? && label_changed?
+    errors.add(:base, "Cette catégorie est protégée et ne peut pas être modifiée") if protected? && (label_changed? || color_changed?)
   end
 end

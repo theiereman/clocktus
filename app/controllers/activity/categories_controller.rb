@@ -27,7 +27,7 @@ class Activity::CategoriesController < ApplicationController
 
   def update
     if @activity_category.update(activity_category_params)
-      redirect_to settings_path
+      redirect_to settings_path, notice: "Catégories mises à jour"
     else
       redirect_to settings_path, alert: @activity_category.errors.full_messages.first
     end
@@ -47,6 +47,6 @@ class Activity::CategoriesController < ApplicationController
   end
 
   def activity_category_params
-    params.expect(activity_category: [ :label ])
+    params.expect(activity_category: [ :label, :color ])
   end
 end
