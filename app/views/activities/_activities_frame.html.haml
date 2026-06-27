@@ -35,7 +35,7 @@
     %h2.mt-10.flex.justify-between Activités de la journée
     %span= @feed.remaining_activities_count(date: @date) > 0 ? "#{@feed.remaining_activities_count(date: @date)} activité(s) à renseigner" : "Toutes les activités du jour ont été renseignées"
 
-  .md:columns-2.gap-2
+  .md:columns-2.gap-6
     - sleep_category = @categories.find(&:protected?)
     - @feed.slots.chunk(&:night).each do |is_night, slots|
       - if is_night
