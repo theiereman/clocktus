@@ -8,12 +8,12 @@ class Activity::CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get activity_categories_url
-    assert_response :success
+    assert_redirected_to settings_path
   end
 
   test "should get new" do
     get new_activity_category_url
-    assert_response :success
+    assert_redirected_to settings_path
   end
 
   test "should create activity_category" do
@@ -21,22 +21,22 @@ class Activity::CategoriesControllerTest < ActionDispatch::IntegrationTest
       post activity_categories_url, params: { activity_category: { label: @activity_category.label, user_id: @activity_category.user_id } }
     end
 
-    assert_redirected_to activity_category_url(Activity::Category.last)
+    assert_redirected_to settings_path
   end
 
   test "should show activity_category" do
     get activity_category_url(@activity_category)
-    assert_response :success
+    assert_redirected_to settings_path
   end
 
   test "should get edit" do
     get edit_activity_category_url(@activity_category)
-    assert_response :success
+    assert_redirected_to settings_path
   end
 
   test "should update activity_category" do
     patch activity_category_url(@activity_category), params: { activity_category: { label: @activity_category.label, user_id: @activity_category.user_id } }
-    assert_redirected_to activity_category_url(@activity_category)
+    assert_redirected_to settings_path
   end
 
   test "should destroy activity_category" do
@@ -45,6 +45,6 @@ class Activity::CategoriesControllerTest < ActionDispatch::IntegrationTest
       delete activity_category_url(@activity_category)
     end
 
-    assert_redirected_to activity_categories_url
+    assert_redirected_to settings_path
   end
 end

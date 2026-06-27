@@ -2,17 +2,19 @@ class Activity::CategoriesController < ApplicationController
   before_action :set_activity_category, only: %i[ show edit update destroy ]
 
   def index
-    @activity_categories = Current.user.activity_categories
+    redirect_to settings_path
   end
 
   def show
+    redirect_to settings_path
   end
 
   def new
-    @activity_category = Activity::Category.new
+    redirect_to settings_path
   end
 
   def edit
+    redirect_to settings_path
   end
 
   def create
