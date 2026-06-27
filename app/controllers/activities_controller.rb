@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :set_variables, except: [ :mark_night_as_sleep ]
+  before_action :set_variables, except: [ :mark_night_as_sleep, :destroy ]
+  before_action :set_activity, only: [ :destroy ]
 
   def index
     view_context.content_for :title, "Test"
@@ -15,6 +16,12 @@ class ActivitiesController < ApplicationController
     else
       render turbo_stream: helpers.turbo_flash_toast(:alert, @activity.errors.full_messages.first)
     end
+  end
+
+  def destroy
+    date = @activity.started_at.to_date
+    @activity.destroy
+    redirect_to activities_path(date: date)
   end
 
   def mark_night_as_sleep
@@ -35,6 +42,10 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def set_activity
+    @activity = Current.user.activities.find(params[:id])
+  end
 
   def set_variables
     datetime = get_most_accurate_activity_datetime
