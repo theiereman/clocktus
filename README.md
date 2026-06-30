@@ -14,6 +14,12 @@ Click on some buttons - _badadim-badaboum_ - your time is tracked.
 
 ![Activities view](activities_view.png)
 
+### Watch your statistics!
+
+![Number of activities per category stat](stat_1.png)
+
+![Activities over time](stat_2.png)
+
 ### Use the calendar view to get an overview
 
 Know at a glance which day is fully completed or not. It took me some time, but I also added the view Excel time-trackers love, you know: **the one with the colored cells**.
