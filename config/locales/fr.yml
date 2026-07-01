@@ -6,6 +6,7 @@ fr:
   common:
     from: "de"
     to: "à"
+    go_back: "Retourner sur le site"
   activerecord:
     errors:
       messages:

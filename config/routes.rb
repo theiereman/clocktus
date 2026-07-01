@@ -23,5 +23,15 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
+  match "/:code",
+  to: "errors#show",
+  as: :errors,
+  via: :all,
+  constraints: {
+    code: Regexp.new(
+      ErrorsController::VALID_STATUS_CODES.join("|")
+    )
+  }
+
   root "activities#index"
 end

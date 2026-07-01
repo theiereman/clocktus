@@ -1,0 +1,8 @@
+!!!
+%html
+  %head= render "layouts/head"
+  %body.h-screen.overflow-y-scroll
+    .flex.flex-col.items-center.p-6.max-w-4xl.mx-auto
+      %h1{class: "text-[12rem]!"}= response.code
+      %h2= @message
+      = link_to t('common.go_back'), root_path, class: "mt-12 text-primary"

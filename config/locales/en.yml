@@ -3,6 +3,7 @@ en:
   common:
     from: "from"
     to: "to"
+    go_back: "Back to the website"
   activerecord:
     errors:
       messages:
