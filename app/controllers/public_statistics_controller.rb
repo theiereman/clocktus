@@ -1,11 +1,13 @@
 class PublicStatisticsController < ApplicationController
   include StatisticsPresentable
+  include Statistics::Searchable
 
   allow_unauthenticated_access only: :show
   layout "public"
 
   def show
-    present_statistics_for(UserProfileLink.find_by!(token: params[:token]).user)
+    user = UserProfileLink.find_by!(token: params[:token]).user
+    present_statistics_for(user, filtered_activities(user))
     render "statistics/show"
   end
 end

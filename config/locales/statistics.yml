@@ -10,6 +10,11 @@ en:
         category: Category
         hours: Hours
         percentage: Percentage
+      filters:
+        title: Filters
+        year: Year
+        all_years: "All"
+
 fr:
   statistics:
     show:
@@ -22,3 +27,7 @@ fr:
         category: Catégorie
         hours: Heures
         percentage: Pourcentage
+      filters:
+        title: Filtres
+        year: Année
+        all_years: "Toutes"

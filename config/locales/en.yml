@@ -6,6 +6,7 @@ en:
     go_back: "Back to the website"
     yes_label: "Yes"
     no_label: "No"
+    apply: "Apply"
   activerecord:
     errors:
       messages:

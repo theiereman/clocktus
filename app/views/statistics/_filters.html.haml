@@ -1,0 +1,5 @@
+= form_with url: statistics_path, method: :get, class: "flex justify-between", data: {turbo_frame: :user_statistics} do |f|
+  .flex.gap-2.items-center
+    = f.label t("statistics.show.filters.year")
+    .w-fit= f.select :year, options_for_select(year_select_values, params[:year] ||  Date.current.year)
+  = f.submit t('common.apply'), class: "self-end"

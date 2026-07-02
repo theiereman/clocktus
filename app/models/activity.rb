@@ -13,6 +13,7 @@ class Activity < ApplicationRecord
   validate :present_or_past
 
   scope :today, -> { where(started_at: Time.current.beginning_of_day..Time.current.end_of_day) }
+  scope :year, ->(year) { where(started_at: Time.zone.local(year)..Time.zone.local(year).end_of_year) }
   scope :at, ->(date) { where(started_at: date.beginning_of_day..date.end_of_day) }
   scope :overlapping, ->(starts_at, ends_at) { where("started_at < ? AND ended_at > ?", ends_at, starts_at) }
 

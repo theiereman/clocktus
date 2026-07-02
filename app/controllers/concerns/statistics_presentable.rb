@@ -2,8 +2,7 @@ module StatisticsPresentable
   extend ActiveSupport::Concern
 
   private
-    def present_statistics_for(user)
-      activities = user.activities
+    def present_statistics_for(user, activities)
       presenter = ActivitiesPerCategoryPresenter.new(activities)
       @count_per_category = presenter.present
       @top_categories = presenter.top_table
