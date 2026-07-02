@@ -4,6 +4,8 @@ en:
     from: "from"
     to: "to"
     go_back: "Back to the website"
+    yes_label: "Yes"
+    no_label: "No"
   activerecord:
     errors:
       messages:

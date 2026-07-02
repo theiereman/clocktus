@@ -10,3 +10,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
 pin "@plausible-analytics/tracker", to: "@plausible-analytics--tracker.js" # @0.4.5
+pin "@rolemodel/turbo-confirm", to: "@rolemodel--turbo-confirm.js" # @2.2.3

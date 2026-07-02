@@ -1,0 +1,7 @@
+%dialog#confirm.border-3.border-text.p-6.max-w-sm.md:max-w-xl.w-full.m-auto.bg-background.overflow-hidden{:inert => ""}
+  .modal__content
+    %p#confirm-title.mb-6
+    #confirm-body
+    .flex.gap-2.justify-end
+      %button.confirm-cancel= t('common.no_label')
+      %button#confirm-accept= t('common.yes_label')

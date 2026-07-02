@@ -37,7 +37,7 @@
           = form_with model: category, url: activity_category_path(category), class: "flex items-center gap-3 flex-1" do |f|
             = f.color_field :color, data: {controller: "autosubmit", action: "change->autosubmit#submit"}, class: "size-9 p-0! cursor-pointer border-0!"
             = f.text_field :label, data: {controller: "autosubmit", action: "blur->autosubmit#submit"}, class: "flex-1"
-          = button_to activity_category_path(category), method: :delete, data: {turbo_confirm: t(".delete_confirm")}, class: "p-0! text-red-600 hover:bg-transparent! hover:text-red-800!" do
+          = button_to activity_category_path(category), method: :delete, data: {turbo_confirm: t(".delete_confirm")}, class: "px-2! text-red-600 hover:bg-transparent! hover:text-red-800!" do
             = lucide_icon "trash-2", class: "size-4"
 
   = form_with model: Activity::Category.new, url: activity_categories_path, class: "flex flex-col md:flex-row gap-3 md:items-center max-w-sm" do |f|

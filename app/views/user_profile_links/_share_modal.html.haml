@@ -1,18 +1,21 @@
 -# locals: (link:)
 
-%dialog#share-modal.border-3.border-text.p-6.max-w-md.w-full.m-auto.bg-background.overflow-hidden{ class: "backdrop:bg-black/50", data: { controller: "modal element-removal tooltip", action: "close->element-removal#remove" } }
+%dialog#share-modal.border-3.border-text.p-6.max-w-sm.md:max-w-xl.w-full.m-auto.bg-background.overflow-hidden{ class: "backdrop:bg-black/50", data: { controller: "modal element-removal tooltip", action: "close->element-removal#remove" } }
   .flex.items-center.justify-between.mb-4
     %p.font-extrabold.uppercase.text-lg= t(".title")
     %button{ type: "button", aria: { label: t(".close") }, data: { action: "modal#close" }, class: "p-0! hover:bg-transparent! hover:text-text!" }
       = lucide_icon "x", class: "size-6"
 
   .flex.gap-2.mb-4{ data: { controller: "clipboard" } }
-    %input.flex-1{ hint: "Aucun lien", type: "text", value: link.present? ? public_statistics_url(token: link.token) : "", readonly: true, data: { clipboard_target: "source" } }
-    %button{ type: "button", data: { action: "mouseover->tooltip#show mouseout->tooltip#hide click->clipboard#copy", clipboard_target: "button", clipboard_copied_label: t(".copied") }, class: "tooltip px-2!"}
-      = lucide_icon "clipboard-copy"
-      .tooltiptext= t(".copy")
-    = button_to user_profile_link_path, method: :patch, data: { action: "mouseover->tooltip#show mouseout->tooltip#hide", turbo_confirm: t(".regenerate_confirm") }, class: "tooltip px-2!" do
-      = lucide_icon "refresh-cw"
-      .tooltiptext= t(".regenerate")
+    .flex.flex-col.flex-1
+      %input.flex-1{ hint: "Aucun lien", type: "text", value: link.present? ? public_statistics_url(token: link.token) : "", readonly: true, data: { clipboard_target: "source" } }
+      %p.text-xs.text-gray-400.ms-1= t('.disclaimer')
+    .flex.items-start
+      %button{ type: "button", data: { action: "mouseover->tooltip#show mouseout->tooltip#hide click->clipboard#copy", clipboard_target: "button", clipboard_copied_label: t(".copied") }, class: "tooltip p-2!"}
+        = lucide_icon "clipboard-copy"
+        .tooltiptext= t(".copy")
+      = button_to user_profile_link_path, method: :patch, data: { action: "mouseover->tooltip#show mouseout->tooltip#hide", turbo_confirm: t(".regenerate_confirm") }, class: "tooltip p-2!" do
+        = lucide_icon "refresh-cw"
+        .tooltiptext= t(".regenerate")
 
   = button_to t(".revoke"), user_profile_link_path, method: :delete, class: "p-0! normal-case! font-normal! text-sm underline hover:bg-transparent! hover:text-red-500!", data: { turbo_confirm: t(".revoke_confirm") }

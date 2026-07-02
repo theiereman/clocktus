@@ -5,10 +5,14 @@ import "view_transitions";
 import "chartkick";
 import "Chart.bundle";
 import "turbo_helpers";
+import "@hotwired/turbo-rails";
 
+import TC from "@rolemodel/turbo-confirm";
 import { init } from "@plausible-analytics/tracker";
 
 init({
   domain: "timetracker.dotsncircles.com",
   endpoint: "https://plausible.dotsncircles.com/api/event",
 });
+
+TC.start();
