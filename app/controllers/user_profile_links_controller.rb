@@ -11,6 +11,12 @@ class UserProfileLinksController < ApplicationController
     render_share_modal(link)
   end
 
+  def destroy
+    link = UserProfileLink.find_or_create_for(Current.user)
+    link.destroy!
+    render turbo_stream: turbo_stream.action(:redirect, statistics_path)
+  end
+
   private
     def render_share_modal(link)
       render turbo_stream: turbo_stream.update(:modals, partial: "user_profile_links/share_modal", locals: { link: link })

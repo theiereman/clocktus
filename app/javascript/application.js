@@ -4,6 +4,7 @@ import "controllers";
 import "view_transitions";
 import "chartkick";
 import "Chart.bundle";
+import "turbo_helpers";
 
 import { init } from "@plausible-analytics/tracker";
 

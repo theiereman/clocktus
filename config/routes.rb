@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resource :calendar, only: :show
   resource :statistics, only: :show
-  resource :user_profile_link, only: %i[ create update ]
+  resource :user_profile_link, only: %i[ create update destroy ]
   get "shared_statistics/:token", to: "public_statistics#show", as: :public_statistics
   resources :settings, only: %i[ index update ]
   resource :account, only: :show

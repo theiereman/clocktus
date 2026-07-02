@@ -5,8 +5,10 @@ en:
       close: Close
       copy: Copy
       copied: Copied!
-      regenerate: Regenerate link
+      regenerate: Cancel sharing
       regenerate_confirm: This will invalidate the current link. Continue?
+      revoke: Revoke shared link
+      revoke_confirm: This will make your profile private. Continue ?
     errors:
       token_generation_failed: Couldn't generate a share link right now. Please try again.
 fr:
@@ -16,7 +18,9 @@ fr:
       close: Fermer
       copy: Copier
       copied: Copié !
-      regenerate: Régénérer le lien
+      regenerate: Regénérer
       regenerate_confirm: Cela invalidera le lien actuel. Continuer ?
+      revoke: Annuler le partage
+      revoke_confirm: Cela empêchera la visualisation de votre profil. Continuer ?
     errors:
       token_generation_failed: Impossible de générer un lien de partage pour le moment. Veuillez réessayer.
