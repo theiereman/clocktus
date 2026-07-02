@@ -11,6 +11,10 @@ class MonthlyCalendar
     Time.days_in_month(@date.month)
   end
 
+  def leading_blank_days_count
+    @date.beginning_of_month.cwday - 1
+  end
+
   def weeks_count
     days_count/ 7.round
   end

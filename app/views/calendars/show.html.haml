@@ -17,6 +17,8 @@
   .grid.grid-cols-7.gap-1.mt-6{data: {action: "mouseleave->calendar-date-hover#reset"}}
     - t(".weekdays").each do |weekday|
       %p.font-bold.opacity-50= weekday
+    - @calendar.leading_blank_days_count.times do
+      %div
     - @calendar.days.each do |day|
       %div{id: day.date.day, data: {"calendar-date-hover-target": "day", action: "mouseover->calendar-date-hover#highlight"}}
         = render "day", day: day
