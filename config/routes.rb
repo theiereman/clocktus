@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "mark_night_as_sleep(/:date)", to: "activities#mark_night_as_sleep", as: :mark_night_as_sleep
 
   namespace :activity do
-    resources :categories
+    resources :categories, only: %i[ create update destroy ]
   end
 
 
@@ -17,9 +17,7 @@ Rails.application.routes.draw do
   resource :statistics, only: :show
   resource :user_profile_link, only: %i[ create update destroy ]
   get "shared_statistics/:token", to: "public_statistics#show", as: :public_statistics
-  resources :settings, only: %i[ index update ]
-  resource :account, only: :show
-  resource :credits, only: :show
+  resource :settings, only: %i[ show update]
 
   get "up" => "rails/health#show", as: :rails_health_check
 

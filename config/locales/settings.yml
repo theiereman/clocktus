@@ -1,8 +1,14 @@
 en:
   settings:
-    index:
+    show:
       title: Settings
       subtitle: Adjust your settings to match your habits
+      developed_by: Developed by
+      contribute: Contribute to the project
+      project: on Github
+      animated_icons_by: Animated icons by
+      icons_by: Icons by
+      sign_out: Sign out
     form:
       schedule: Schedule
       categories: Categories
@@ -14,9 +20,15 @@ en:
       updated: Settings updated
 fr:
   settings:
-    index:
+    show:
       title: Paramètres
       subtitle: Ajustez vos paramètres selon vos habitudes
+      developed_by: Développé par
+      contribute: Contribuer au projet
+      project: sur Github
+      animated_icons_by: Icônes animées par
+      icons_by: Icônes par
+      sign_out: Se déconnecter
     form:
       global: Général
       schedule: Emploi du temps

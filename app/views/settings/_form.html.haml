@@ -1,14 +1,14 @@
 -# locals: (user:)
 
 .space-y-12
-  %h2.mb-1= t(".global")
-  = form_with model: @user, url: setting_path(@user), method: :patch, class: "flex flex-wrap gap-8" do |f|
+  %h2.mb-2= t(".global")
+  = form_with model: @user, url: settings_path(@user), method: :patch, class: "flex flex-wrap gap-8" do |f|
     .flex.flex-col.gap-1
       = f.label :locale
       = f.select :locale, options_for_select(I18n.available_locales.map { |l| [ t("languages.#{l}"), l ] }, @user.locale.presence || I18n.locale), {}, data: {controller: "autosubmit", action: "change->autosubmit#submit"}
-  %h2.mb-1= t(".schedule")
+  %h2.mb-2= t(".schedule")
   - hour_options = (0..23).map { |h| [ format_hour(h), h ] }
-  = form_with model: @user, url: setting_path(@user), method: :patch, class: "flex flex-col items-start gap-4" do |f|
+  = form_with model: @user, url: settings_path(@user), method: :patch, class: "flex flex-col items-start gap-4" do |f|
 
     .flex.flex-col.gap-1.items-start
       = f.label :activity_duration_in_minutes
@@ -23,7 +23,7 @@
       = f.select :sleep_hour, options_for_select(hour_options, @user.sleep_hour), {}, data: {controller: "autosubmit", action: "change->autosubmit#submit"}, class: "text-center"
 
 
-  .flex.justify-between.items-start.mb-1
+  .flex.justify-between.items-start.mb-2
     %h2= t(".categories")
   %p.font-normal.normal-case.mb-6{class: "text-text/60"}= t(".categories_hint")
 
@@ -40,8 +40,8 @@
           = button_to activity_category_path(category), method: :delete, data: {turbo_confirm: t(".delete_confirm")}, class: "px-2! text-red-600 hover:bg-transparent! hover:text-red-800!" do
             = lucide_icon "trash-2", class: "size-4"
 
-  = form_with model: Activity::Category.new, url: activity_categories_path, class: "flex flex-col md:flex-row gap-3 md:items-center max-w-sm" do |f|
-    .flex.gap-2
-      = f.color_field :color, class: "size-9 p-0! cursor-pointer border-0! shrink-0"
-      = f.text_field :label, placeholder: t(".new_category_placeholder"), class: "flex-1"
-    = f.submit t(".add_category"), class: "bg-primary!"
+    = form_with model: Activity::Category.new, url: activity_categories_path, class: "mt-2 flex flex-col md:flex-row gap-3 md:items-center max-w-sm" do |f|
+      .flex.gap-2
+        = f.color_field :color, class: "size-9 p-0! cursor-pointer border-0! shrink-0"
+        = f.text_field :label, placeholder: t(".new_category_placeholder"), class: "flex-1"
+      = f.submit t(".add_category"), class: "bg-primary!"

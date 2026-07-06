@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
   before_action :set_user
 
-  def index
+  def show
   end
 
   def update

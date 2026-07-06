@@ -5,3 +5,6 @@
 
 .mt-10
   = render "form", user: @user
+
+.mt-12= render "credits"
+.mt-12= button_to t(".sign_out"), session_path, method: :delete, class: "bg-red-400 text-red-900"
