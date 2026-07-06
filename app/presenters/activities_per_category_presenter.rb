@@ -26,7 +26,6 @@ class ActivitiesPerCategoryPresenter
 
   def hours_by_label_and_color
     @cache ||= @activities
-      .includes(:category)
       .group_by { |a| [ a.category.label, a.category.color ] }
       .transform_values { |acts| (acts.sum { |a| a.ended_at - a.started_at } / 3600.0).round(2) }
   end

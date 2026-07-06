@@ -31,7 +31,6 @@ class HoursPerCategoryPresenter
 
   def hours_by_category_and_date
     @cache ||= @activities
-      .includes(:category)
       .group_by { |a| [ a.category, a.started_at.to_date ] }
       .each_with_object(Hash.new { |h, k| h[k] = {} }) do |(key, acts), hash|
         category, date = key

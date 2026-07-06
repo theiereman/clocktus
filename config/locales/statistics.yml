@@ -12,8 +12,9 @@ en:
         percentage: Percentage
       filters:
         title: Filters
-        year: Year
-        all_years: "All"
+        from: From
+        to: To
+        full_days_only: Full days only
 
 fr:
   statistics:
@@ -29,5 +30,6 @@ fr:
         percentage: Pourcentage
       filters:
         title: Filtres
-        year: Année
-        all_years: "Toutes"
+        from: Du
+        to: Au
+        full_days_only: Jours complets uniquement

@@ -6,6 +6,10 @@ class User::Progress
     @range = range
   end
 
+  def self.between(user, start_date, end_date)
+    new(user, start_date.beginning_of_day..end_date.end_of_day)
+  end
+
   def self.for_the_day(user, date = Date.current)
     new(user, date.beginning_of_day..date.end_of_day)
   end
@@ -46,17 +50,19 @@ class User::Progress
     end
   end
 
-  def activities_per_day
-    @apd ||= activities.each_with_object({}) do |a, h|
-      h[a.started_at.to_date] ||= []
-      h[a.started_at.to_date] << a
-    end
-  end
-
   def activities
     @activities ||= @user.activities
                          .where(started_at: @range)
                          .includes(:category)
                          .to_a
+  end
+
+  private
+
+  def activities_per_day
+    @apd ||= activities.each_with_object({}) do |a, h|
+      h[a.started_at.to_date] ||= []
+      h[a.started_at.to_date] << a
+    end
   end
 end
