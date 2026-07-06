@@ -1,10 +1,8 @@
-# Time Tracker
-
-Time tracker is a very simple app to track how you spend your hours during the day developed with Ruby On Rails.
+# Clocktus - Time Tracker
 
 ## Who thought you'd be your own big brother?
 
-Wasn't it your dream to be able to track every hour of your life and extract statistics out of it? Well now it is, and `Time Tracker` makes it very easy!
+Wasn't it your dream to be able to track every hour of your life and extract statistics out of it? Well now it is, and Clocktus makes it very easy!
 
 ## Features
 

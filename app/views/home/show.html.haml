@@ -7,16 +7,16 @@
   %link{rel: "alternate", hreflang: "fr", href: root_url(locale: :fr)}/
   %link{rel: "alternate", hreflang: "x-default", href: root_url(locale: nil)}/
   %meta{property: "og:type", content: "website"}/
-  %meta{property: "og:site_name", content: "Time Tracker"}/
-  %meta{property: "og:title", content: "#{t('.title')} - Time Tracker"}/
+  %meta{property: "og:site_name", content: "Clocktus"}/
+  %meta{property: "og:title", content: "#{t('.title')} - Clocktus"}/
   %meta{property: "og:description", content: t(".meta_description")}/
   %meta{property: "og:url", content: canonical}/
   %meta{property: "og:locale", content: I18n.locale == :fr ? "fr_FR" : "en_US"}/
   %meta{name: "twitter:card", content: "summary_large_image"}/
-  %meta{name: "twitter:title", content: "#{t('.title')} - Time Tracker"}/
+  %meta{name: "twitter:title", content: "#{t('.title')} - Clocktus"}/
   %meta{name: "twitter:description", content: t(".meta_description")}/
   %script{type: "application/ld+json"}<
-    != { "@context" => "https://schema.org", "@type" => "SoftwareApplication", "name" => "Time Tracker", "applicationCategory" => "LifestyleApplication", "operatingSystem" => "Web", "url" => canonical, "description" => t(".meta_description"), "offers" => { "@type" => "Offer", "price" => "0", "priceCurrency" => "EUR" } }.to_json
+    != { "@context" => "https://schema.org", "@type" => "SoftwareApplication", "name" => "Clocktus", "applicationCategory" => "LifestyleApplication", "operatingSystem" => "Web", "url" => canonical, "description" => t(".meta_description"), "offers" => { "@type" => "Offer", "price" => "0", "priceCurrency" => "EUR" } }.to_json
 
 = render "hero"
 = render "how_it_works"
