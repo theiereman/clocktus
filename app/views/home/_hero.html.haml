@@ -1,0 +1,21 @@
+%section.max-w-6xl.mx-auto.px-6.py-16
+  .grid.grid-cols-1.items-center.gap-12{class: "md:grid-cols-2"}
+    .flex.flex-col.gap-6
+      %h1
+        = t(".title_top")
+        %div.md:mt-2.leading-18
+          %span.border-5.bg-green-300.px-2= t('.block')
+          %span= t('.by')
+          %span.border-5.bg-purple-300.px-2= t('.block')
+      %p.text-lg{class: "text-text/60"}= t(".subtitle")
+      .w-fit= link_to t(".cta"), new_session_path, class: "bg-primary! inline-block"
+
+    .border-5.p-4.flex.flex-col.gap-2{"aria-hidden": "true"}
+      .flex.justify-between.items-baseline.border-b-1.pb-2.mb-1
+        %span.font-extrabold.uppercase= t(".mockup_today")
+      - hero_mockup_slots.each_with_index do |slot, index|
+        .flex.items-center.gap-3
+          %span.w-12.text-sm.font-bold= slot[:time]
+          .relative.flex-1.h-8.border-3.border-text.overflow-hidden
+            .absolute.inset-0.landing-slot-fill{style: "background-color: #{slot[:color]}; --delay: #{index * 0.55}s"}
+            %span.landing-slot-label.relative.z-10.px-2.text-sm.font-bold.uppercase.leading-7{style: "color: #{contrasted_text_color(slot[:color])}; --delay: #{index * 0.55}s"}= slot[:label]

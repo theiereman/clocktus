@@ -1,0 +1,9 @@
+%section.max-w-6xl.mx-auto.px-6.py-16
+  %h2= t(".title")
+  %p.mt-2.mb-6{class: "text-text/60"}= t(".intro")
+  .grid.grid-cols-1.gap-6{class: "md:grid-cols-2"}
+    %ul.flex.flex-col.gap-4
+      - [ t(".no_reminders"), t(".no_timers"), t(".no_gamification") ].each do |anti_feature|
+        %li.flex.items-center.gap-3
+          = lucide_icon "x", class: "size-6 shrink-0"
+          %span.text-lg{class: "text-text/60"}= anti_feature

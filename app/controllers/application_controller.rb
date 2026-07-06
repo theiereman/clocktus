@@ -18,9 +18,12 @@ class ApplicationController < ActionController::Base
     I18n.with_locale(locale_for_request, &action)
   end
 
-  # User preference wins; otherwise fall back to the browser's Accept-Language,
-  # then to the application default locale.
+  # An explicit URL locale wins, then the user preference; otherwise fall back
+  # to the browser's Accept-Language, then to the application default locale.
   def locale_for_request
+    param_locale = params[:locale].presence&.to_sym
+    return param_locale if param_locale && I18n.available_locales.include?(param_locale)
+
     user_locale = Current.user&.locale.presence&.to_sym
     return user_locale if user_locale && I18n.available_locales.include?(user_locale)
 

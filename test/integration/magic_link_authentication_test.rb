@@ -3,7 +3,7 @@ require "test_helper"
 class MagicLinkAuthenticationTest < ActionDispatch::IntegrationTest
   test "full sign-in flow with a magic link code" do
     # Unauthenticated visit redirects to the sign-in page.
-    get root_path
+    get activities_path
     assert_redirected_to new_session_path
 
     # Request a code for a new email address: creates the user and a magic link.
@@ -17,7 +17,7 @@ class MagicLinkAuthenticationTest < ActionDispatch::IntegrationTest
 
     # Submitting the correct code starts a session and lands on the app.
     post session_magic_link_path, params: { code: code }
-    assert_redirected_to root_path
+    assert_redirected_to activities_path
     assert_equal 0, MagicLink.count, "magic link should be consumed (single-use)"
 
     follow_redirect!
@@ -27,7 +27,7 @@ class MagicLinkAuthenticationTest < ActionDispatch::IntegrationTest
     delete session_path
     assert_redirected_to new_session_path
 
-    get root_path
+    get activities_path
     assert_redirected_to new_session_path
   end
 

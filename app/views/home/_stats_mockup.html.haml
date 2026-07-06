@@ -1,0 +1,24 @@
+%section.max-w-6xl.mx-auto.px-6.py-16{data: { controller: "reveal" }}
+  %h2= t(".title")
+  %p.mt-2.mb-6{class: "text-text/60"}= t(".subtitle")
+  .grid.grid-cols-1.gap-4{class: "md:grid-cols-2"}
+    .px-6{"aria-hidden": "true"}
+      .flex.items-end.gap-3.h-56
+        - stats_mockup_categories.each_with_index do |category, index|
+          .flex-1.h-full.flex.flex-col.justify-end
+            .landing-bar.border-3.border-text{style: "background-color: #{category[:color]}; height: #{category[:height]}%; --delay: #{index * 0.12}s"}
+      .flex.gap-3.mt-2
+        - stats_mockup_categories.each do |category|
+          .flex-1.text-center.text-xs.uppercase.truncate= category[:label]
+    .border-5.p-6.flex.flex-col.justify-center.gap-4{"aria-hidden": "true"}
+      - stats_mockup_categories.each do |category|
+        .flex.items-center.gap-3
+          .size-4.border-3.border-text.shrink-0{style: "background-color: #{category[:color]}"}
+          %span.flex-1.font-bold.uppercase= category[:label]
+          .font-extrabold.text-xl.flex.gap-4
+            %span.font-normal
+              %span{data: { reveal_target: "counter", count_to: category[:hours] }} 0
+              = "h"
+            %span
+              %span{data: { reveal_target: "counter", count_to: category[:percentage] }} 0
+              = "%"

@@ -45,11 +45,11 @@ module Authentication
     end
 
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
+      session.delete(:return_to_after_authenticating) || activities_url
     end
 
     def redirect_authenticated_user
-      redirect_to root_url if authenticated?
+      redirect_to activities_url if authenticated?
     end
 
     def start_new_session_for(user)

@@ -1,1 +1,12 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+Allow: /
+Disallow: /activities
+Disallow: /session
+Disallow: /settings
+Disallow: /calendar
+Disallow: /statistics
+Disallow: /account
+Disallow: /shared_statistics/
+
+Sitemap: https://timetracker.dotsncircles.com/sitemap.xml

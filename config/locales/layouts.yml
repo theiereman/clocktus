@@ -7,6 +7,8 @@ en:
     public:
       cta: Like what you see? Track your own time too.
       sign_in: Sign in / Sign up
+    landing:
+      sign_in: Sign in
 fr:
   layouts:
     sessions:
@@ -16,3 +18,5 @@ fr:
     public:
       cta: Envie de suivre votre temps aussi ?
       sign_in: Se connecter / S'inscrire
+    landing:
+      sign_in: Se connecter

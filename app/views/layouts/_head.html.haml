@@ -1,5 +1,7 @@
 %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 %title= content_for(:title) ? "#{content_for(:title)} - Time Tracker" : "Time Tracker"
+- if content_for?(:description)
+  %meta{name: "description", content: content_for(:description)}/
 %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
 %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
 %meta{:content => "yes", :name => "mobile-web-app-capable"}/

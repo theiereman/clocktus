@@ -59,3 +59,74 @@ input:not([type="submit"]) {
 label {
   @apply text-sm uppercase font-extrabold;
 }
+
+@keyframes slot-fill {
+  0%,
+  6% {
+    transform: scaleX(0);
+  }
+  14%,
+  82% {
+    transform: scaleX(1);
+  }
+  92%,
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes slot-label {
+  0%,
+  12% {
+    opacity: 0;
+  }
+  18%,
+  80% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.landing-slot-fill {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: slot-fill 9s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.landing-slot-label {
+  opacity: 0;
+  animation: slot-label 9s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.landing-bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+.is-visible .landing-bar {
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-slot-fill {
+    animation: none;
+    transform: scaleX(1);
+  }
+
+  .landing-slot-label {
+    animation: none;
+    opacity: 1;
+  }
+
+  .landing-bar {
+    transition: none;
+    transform: scaleY(1);
+  }
+}

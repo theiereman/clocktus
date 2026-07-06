@@ -1,0 +1,11 @@
+%section.max-w-6xl.mx-auto.px-6.py-16
+  %h2= t(".title")
+  .mb-6{class: "text-text/60"}= t(".subtitle")
+  .grid.grid-cols-1.gap-6{class: "md:grid-cols-3"}
+    - how_it_works_steps.each_with_index do |step, index|
+      .border-3.border-primary.flex.flex-col
+        .flex.items-center.bg-primary
+          .size-10.flex.items-center.justify-center.text-xl= index + 1
+          %h3.uppercase= step[:title]
+        .px-3.py-2
+          %p{class: "text-text/60"}= step[:text]

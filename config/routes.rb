@@ -33,5 +33,7 @@ Rails.application.routes.draw do
     )
   }
 
-  root "activities#index"
+  scope "(:locale)", locale: /en|fr/ do
+    root "home#show"
+  end
 end

@@ -1,0 +1,24 @@
+!!!
+%html{lang: I18n.locale}
+  %head= render "layouts/head"
+  %body
+    = flash_toasts
+    %header.sticky.top-0.z-50.bg-background.flex.items-center.justify-between.border-b-5.px-4.py-3
+      %p.text-xl.font-extrabold.uppercase.leading-none
+        = t("layouts.sessions.brand_top")
+        %br/
+        = t("layouts.sessions.brand_bottom")
+      %nav.flex.items-center{class: "gap-1 sm:gap-2"}
+        = link_to "EN", root_path(locale: :en), class: "px-2! sm:px-3! #{'active' if I18n.locale == :en}"
+        = link_to "FR", root_path(locale: :fr), class: "px-2! sm:px-3! #{'active' if I18n.locale == :fr}"
+        = link_to t(".sign_in"), new_session_path, class: "bg-primary! px-3! sm:px-6!"
+    %main
+      = yield
+    %footer.border-t-5.p-6.flex.flex-wrap.items-center.justify-between.gap-4
+      %p.font-extrabold.uppercase
+        = t("layouts.sessions.brand_top")
+        = t("layouts.sessions.brand_bottom")
+      %nav.flex.items-center.gap-2
+        = link_to "EN", root_path(locale: :en)
+        = link_to "FR", root_path(locale: :fr)
+        = link_to t(".sign_in"), new_session_path

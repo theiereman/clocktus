@@ -1,0 +1,88 @@
+en:
+  home:
+    show:
+      title: Your day, block by block
+      meta_description: Combine privacy and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
+    hero:
+      title_top: Your day,
+      block: block
+      by: by
+      subtitle: Combine privacy and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
+      cta: Start for free
+      mockup_today: Today
+    how_it_works:
+      title: Simplicity in the service of efficiency
+      subtitle: The time spent tracking your time shouldn't show up in your time tracker.
+      step1_title: Set up
+      step1_text: Set a sleep schedule and the categories that match your habits, and that's it — you're ready to start!
+      step2_title: Fill in
+      step2_text: Fill fixed-length blocks with a single click. Your day comes together naturally.
+      step3_title: Enjoy
+      step3_text: After a few days your statistics start to take shape, and you can see where the hours of your day really go.
+    stats_mockup:
+      title: See where your time really goes
+      subtitle: Hooked on sport, doom-scrolling or sleeping in? Your habits reveal themselves fast, so you can take control of them.
+    privacy:
+      title: Stay in control of your data
+      open_source_title: Open source
+      open_source_text: The project is fully available and visible on GitHub — no shady practices hidden in the code.
+      no_ads_title: No ads, no data reselling
+      no_ads_text: Your data belongs to you, and always will.
+      analytics_title: Cookieless analytics
+      analytics_text: Visit analytics are anonymous, privacy-friendly and optional.
+      data_removal_title: No data retention
+      data_removal_text: If the tool isn't for you, you can delete your account in one click. Your data is erased immediately and completely.
+    simplicity:
+      title: Deliberately simple
+      intro: We won't improve your productivity — but you will. Enter your data however you like, at your own pace.
+      no_reminders: No email spam or push notifications.
+      no_timers: No timer running in the background.
+      no_gamification: No streaks, badges or guilt-tripping.
+      just: Just slots, categories and charts.
+    final_cta:
+      title: Start filling your grid
+      button: Sign up free
+fr:
+  home:
+    show:
+      title: Votre jour, bloc par bloc
+      meta_description: Mêlez vie privée et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
+    hero:
+      title_top: Votre journée,
+      block: bloc
+      by: par
+      subtitle: Mêlez vie privée et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
+      cta: Commencer gratuitement
+      mockup_today: Aujourd'hui
+    how_it_works:
+      title: La simplicité au service de l'efficacité
+      subtitle: Le temps passé à suivre votre temps ne devrait pas figurer sur votre outil de suivi de temps.
+      step1_title: Paramétrez
+      step1_text: Définissez un rythme de sommeil, les catégories qui correspondent à vos habitudes et ça y est, vous êtes prêts à commencer !
+      step2_title: Saisissez
+      step2_text: Remplissez des blocs d'une durée prédéfinie d'un simple clic. Le déroulement de votre journée se fait de manière naturelle.
+      step3_title: Admirez
+      step3_text: Après quelques jours vos statistiques commenceront à prendre forme et vous pourrez alors consulter où vont les heures passées de votre journée.
+    stats_mockup:
+      title: Voyez où passe vraiment votre temps
+      subtitle: Accro au sport, au doom-scrolling ou aux grasses matinées. Vos habitudes vont très vite se révéler afin que vous puissiez les contrôler.
+    privacy:
+      title: Soyez maître de vos données
+      open_source_title: Open-source
+      open_source_text: Le projet est entièrement disponible et visible sur Github - aucune pratique douteuse n'est cachée dans le code.
+      no_ads_title: Aucune pub, ni revente de données
+      no_ads_text: Vos données vous appartiennent et vous appartiendront toujours.
+      analytics_title: Analytics sans cookies
+      analytics_text: Les statistiques de visite sont anonymes, respectueuses de la vie privée et optionnelles.
+      data_removal_title: Aucune conservation des données
+      data_removal_text: Si l'outil ne vous plaît pas vous pourrez supprimer votre compte en un clic. Vos données seront immédiatement et entièrement supprimées.
+    simplicity:
+      title: Volontairement simple
+      intro: Nous n'allons pas améliorer votre productivité mais vous oui. Saisissez vos données comme bon vous semble, à votre rythme.
+      no_reminders: Pas de spam par e-mail ou notification push.
+      no_timers: Pas de minuteur qui tourne en arrière-plan.
+      no_gamification: Pas de séries, de badges ni de culpabilisation.
+      just: Juste des créneaux, des catégories et des graphiques.
+    final_cta:
+      title: Commencez à remplir votre grille
+      button: Inscription gratuite
