@@ -1,12 +1,11 @@
-= form_with url: statistics_path, method: :get, class: "flex flex-col gap-2", data: {turbo_frame: :user_statistics} do |f|
-  .flex.gap-2
-    .flex.gap-2.items-center
-      = f.label :from, t("statistics.show.filters.from")
-      = f.date_field :from, value: @from
-    .flex.gap-2.items-center
-      = f.label :to, t("statistics.show.filters.to")
-      = f.date_field :to, value: @to
+= form_with url: statistics_path, method: :get, class: "flex flex-col md:flex-row gap-2", data: {turbo_frame: :user_statistics} do |f|
+  .flex.gap-2.items-center
+    = f.label :from, t("statistics.show.filters.from")
+    = f.date_field :from, value: @from
+  .flex.gap-2.items-center
+    = f.label :to, t("statistics.show.filters.to")
+    = f.date_field :to, value: @to
   .flex.gap-2.items-center
     = f.checkbox :full_days_only, checked: @full_days_only
     = f.label :full_days_only, t("statistics.show.filters.full_days_only")
-  = f.submit t('common.apply'), class: "self-end"
+  .ms-auto.bg-primary= f.submit t('common.apply')
