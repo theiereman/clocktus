@@ -3,10 +3,10 @@ image: teyermann/timetracker
 
 servers:
   web:
-    - timetracker.dotsncircles.com
+    - www.clocktus.com
   worker:
     hosts:
-      - timetracker.dotsncircles.com
+      - www.clocktus.com
     cmd: bin/rails solid_queue:start
 
 proxy:

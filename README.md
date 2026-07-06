@@ -72,7 +72,7 @@ In the future, if some more users enjoy it I'll make it more robust for the sake
 
 ## Bug report or feature request
 
-If you encounter a bug or have a feature request, [send me an email](mailto:timetracker@dotsncircles.com), create an issue, or start a discussion thread. Please be as descriptive as possible by providing the most information you can, and ideally an example or a way to reproduce it.
+If you encounter a bug or have a feature request, [send me an email](mailto:contact@clocktus.com), create an issue, or start a discussion thread. Please be as descriptive as possible by providing the most information you can, and ideally an example or a way to reproduce it.
 
 ## Code of conduct
 

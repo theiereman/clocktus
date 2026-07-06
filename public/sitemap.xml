@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://timetracker.dotsncircles.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://timetracker.dotsncircles.com/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://timetracker.dotsncircles.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://timetracker.dotsncircles.com/"/>
+    <loc>https://www.clocktus.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.clocktus.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.clocktus.com/fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.clocktus.com/" />
   </url>
   <url>
-    <loc>https://timetracker.dotsncircles.com/fr</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://timetracker.dotsncircles.com/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://timetracker.dotsncircles.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://timetracker.dotsncircles.com/"/>
+    <loc>https://www.clocktus.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.clocktus.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.clocktus.com/fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.clocktus.com/" />
   </url>
 </urlset>

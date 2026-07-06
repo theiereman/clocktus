@@ -11,7 +11,7 @@ import TC from "@rolemodel/turbo-confirm";
 import { init } from "@plausible-analytics/tracker";
 
 init({
-  domain: "timetracker.dotsncircles.com",
+  domain: "www.clocktus.com",
   endpoint: "https://plausible.dotsncircles.com/api/event",
 });
 

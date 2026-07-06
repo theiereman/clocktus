@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "Time Tracker <contact@dotsncircles.com>"
+  default from: "Clocktus <www.clocktus.com>"
   layout "mailer"
 end
