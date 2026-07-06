@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_variables, except: [ :mark_night_as_sleep, :destroy ]
+  before_action :set_variables, except: [ :mark_night_as_sleep, :destroy, :create ]
   before_action :set_activity, only: [ :destroy ]
 
   def index
@@ -8,16 +8,12 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity.attributes = activity_params
-    @activity.started_at = Current.user.snap_to_activity_slot(@activity.started_at)
-    @activity.ended_at = @activity.started_at + Current.user.activity_duration_in_minutes.minutes
+    @activity = Current.user.fill_slot(slot_started_at, activity_category_id: activity_params[:activity_category_id])
 
-    absorb_overlapping_activities
-
-    if @activity.save
-      redirect_to activities_path(datetime: @activity.ended_at)
+    if @activity.persisted?
+      respond_to_filled_slot
     else
-      render turbo_stream: helpers.turbo_flash_toast(:alert, @activity.errors.full_messages.first)
+      render turbo_stream: helpers.turbo_flash_toast(:alert, @activity.errors.full_messages.first), status: :unprocessable_entity
     end
   end
 
@@ -45,11 +41,21 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def absorb_overlapping_activities
-    Current.user.activities
-      .overlapping(@activity.started_at, @activity.ended_at)
-      .where.not(id: @activity.id)
-      .destroy_all
+  def slot_started_at
+    Time.zone.parse(activity_params[:started_at].to_s) +
+      (slot_offset * Current.user.activity_duration_in_minutes).minutes
+  end
+
+  def slot_offset
+    params.fetch(:slot_offset, 0).to_i
+  end
+
+  def respond_to_filled_slot
+    if params[:optimistic]
+      head :no_content
+    else
+      redirect_to activities_path(datetime: @activity.ended_at)
+    end
   end
 
   def sleep_slot_start_times
@@ -78,7 +84,9 @@ class ActivitiesController < ApplicationController
                 Current.user.last_activity(Date.current)&.ended_at ||
                 Time.current
 
-    datetime = Time.zone.parse(datetime.to_s) if datetime.is_a?(String)
+    if datetime.is_a?(String)
+      datetime = datetime.match?(/\A\d+\z/) ? Time.zone.at(datetime.to_i) : Time.zone.parse(datetime)
+    end
     return Time.current if datetime.to_date > Date.current
     datetime
   end

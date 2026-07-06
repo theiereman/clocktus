@@ -7,9 +7,9 @@
   = render "date_navigation"
 
 .space-y-6
-  .grid.grid-cols-2.gap-4.text-lg
+  .grid.grid-cols-2.gap-4.text-lg{data: { controller: "optimistic-fill", action: "click->optimistic-fill#persist", optimistic_fill_slot_seconds_value: Current.user.activity_duration_in_minutes * 60, optimistic_fill_cursor_value: @activity.started_at.to_i, optimistic_fill_day_end_value: @feed.slots.last.starts_at.to_i }}
     - @categories.each do |category|
-      = form_for :activity, url: activities_path, method: :post do |form|
+      = form_for :activity, url: activities_path, method: :post, html: { data: { optimistic_fill_color: category.color, optimistic_fill_text_color: contrasted_text_color(category.color), optimistic_fill_label: category.label } } do |form|
         = form.hidden_field :id, value: @activity&.id
         = form.hidden_field :activity_category_id, value: category.id
         = form.hidden_field :started_at, value: @activity.started_at

@@ -13,6 +13,20 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :activity_categories
 
+  def fill_slot(started_at, activity_category_id:)
+    started_at = snap_to_activity_slot(started_at)
+    ended_at = started_at + activity_duration_in_minutes.minutes
+    activity = activities.new(started_at:, ended_at:, activity_category_id:)
+
+    transaction do
+      activities.overlapping(started_at, ended_at).destroy_all
+      activity.save!
+    end
+    activity
+  rescue ActiveRecord::RecordInvalid
+    activity
+  end
+
   def last_activity(day)
     activities.where(started_at: day.beginning_of_day...day.end_of_day).order(started_at: :desc).first
   end
