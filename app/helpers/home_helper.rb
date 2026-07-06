@@ -1,14 +1,12 @@
 module HomeHelper
   def hero_mockup_slots
     [
-      { time: "06:00", color: "#2d3966", label: t("activity.category.defaults.sleep") },
-      { time: "07:00", color: "#8ff0a4", label: t("activity.category.defaults.reading") },
-      { time: "08:00", color: "#dc8add", label: t("activity.category.defaults.work") },
+      { time: "07:00", color: "#2d3966", label: t("activity.category.defaults.sleep") },
+      { time: "08:00", color: "#f6d32d", label: t("activity.category.defaults.leisure") },
       { time: "09:00", color: "#dc8add", label: t("activity.category.defaults.work") },
-      { time: "10:00", color: "#f66151", label: t("activity.category.defaults.cooking") },
-      { time: "11:00", color: "#f6d32d", label: t("activity.category.defaults.leisure") },
-      { time: "12:00", color: "#99c1f1", label: t("activity.category.defaults.outings") },
-      { time: "13:00", color: "#dc8add", label: t("activity.category.defaults.work") }
+      { time: "10:00", color: "#dc8add", label: t("activity.category.defaults.work") },
+      { time: "11:00", color: "#99c1f1", label: t("activity.category.defaults.outings") },
+      { time: "12:00", color: "#f66151", label: t("activity.category.defaults.cooking") }
     ]
   end
 
@@ -34,7 +32,6 @@ module HomeHelper
   def privacy_points
     [
       { icon: "git-pull-request-arrow", title: t("home.privacy.open_source_title"), text: t("home.privacy.open_source_text") },
-      { icon: "shield-check", title: t("home.privacy.no_ads_title"), text: t("home.privacy.no_ads_text") },
       { icon: "cookie", title: t("home.privacy.analytics_title"), text: t("home.privacy.analytics_text") },
       { icon: "brush-cleaning", title: t("home.privacy.data_removal_title"), text: t("home.privacy.data_removal_text") }
     ]

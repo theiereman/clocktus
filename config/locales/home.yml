@@ -2,12 +2,12 @@ en:
   home:
     show:
       title: Your day, block by block
-      meta_description: Combine privacy and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
+      meta_description: Combine efficiency and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
     hero:
       title_top: Your day,
       block: block
       by: by
-      subtitle: Combine privacy and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
+      subtitle: Combine efficiency and time tracking in a single tool. Knowing your habits shouldn't come at the expense of your privacy.
       cta: Start for free
       mockup_today: Today
     how_it_works:
@@ -28,7 +28,7 @@ en:
       open_source_text: The project is fully available and visible on GitHub — no shady practices hidden in the code.
       no_ads_title: No ads, no data reselling
       no_ads_text: Your data belongs to you, and always will.
-      analytics_title: Cookieless analytics
+      analytics_title: Cookieless
       analytics_text: Visit analytics are anonymous, privacy-friendly and optional.
       data_removal_title: No data retention
       data_removal_text: If the tool isn't for you, you can delete your account in one click. Your data is erased immediately and completely.
@@ -46,12 +46,12 @@ fr:
   home:
     show:
       title: Votre jour, bloc par bloc
-      meta_description: Mêlez vie privée et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
+      meta_description: Mêlez efficacité et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
     hero:
       title_top: Votre journée,
       block: bloc
       by: par
-      subtitle: Mêlez vie privée et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
+      subtitle: Mêlez efficacité et suivi de temps au sein d'un même outil. Connaître vos habitudes ne devrait pas se faire aux dépens de votre vie privée.
       cta: Commencer gratuitement
       mockup_today: Aujourd'hui
     how_it_works:
@@ -72,9 +72,9 @@ fr:
       open_source_text: Le projet est entièrement disponible et visible sur Github - aucune pratique douteuse n'est cachée dans le code.
       no_ads_title: Aucune pub, ni revente de données
       no_ads_text: Vos données vous appartiennent et vous appartiendront toujours.
-      analytics_title: Analytics sans cookies
+      analytics_title: Aucun cookie
       analytics_text: Les statistiques de visite sont anonymes, respectueuses de la vie privée et optionnelles.
-      data_removal_title: Aucune conservation des données
+      data_removal_title: suppr. intégrale
       data_removal_text: Si l'outil ne vous plaît pas vous pourrez supprimer votre compte en un clic. Vos données seront immédiatement et entièrement supprimées.
     simplicity:
       title: Volontairement simple
