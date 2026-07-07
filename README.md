@@ -10,6 +10,7 @@
   <a href="./LICENSE"><img alt="Licence" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge"></a>
   <img alt="Rails" src="https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white">
   <img alt="Ruby" src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white">
+  <br/>
   <a href="https://github.com/theiereman/clocktus/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/theiereman/clocktus/actions/workflows/ci.yml/badge.svg"></a>
   <a href="https://codecov.io/github/theiereman/clocktus"><img alt="codecov" src="https://codecov.io/github/theiereman/clocktus/graph/badge.svg?token=JYLHM1JC65"></a>
 </p>
