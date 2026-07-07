@@ -15,22 +15,24 @@
         = form.hidden_field :started_at, value: @activity.started_at
         = form.submit category.label, class: "size-full p-2! truncate md:py-4! hover:bg-(--cat-hover)! cursor-pointer", data: { controller: "press", action: "pointerdown->press#press pointerup->press#release pointercancel->press#release pointerleave->press#release" }, style: "background-color: #{category.color}; color: #{contrasted_text_color(category.color)}; border: 5px solid #{darken_color(category.color)}; --cat-hover: #{darken_color(category.color)}"
 
-  .mx-auto= render "current_selected_activity_preview", current_timestamp: @activity.started_at, slots: @feed.slots
+  .mx-auto= render "current_selected_activity_preview", current_timestamp: @activity.started_at, slots: @progress.slots
 
   .title
     %h2.mt-10.flex.justify-between= t(".daily_activities")
-    %span= t(".remaining", count: @feed.remaining_activities_count(date: @date))
+    %span= t(".remaining", count: @progress.remaining_activities_count(date: @date))
 
-  .md:columns-2.gap-6
-    - sleep_category = @categories.find(&:protected?)
-    - @feed.slots.chunk(&:night).each do |is_night, slots|
-      - if is_night
-        %div.relative.group.break-inside-avoid
-          %div{class: "absolute -inset-2 border-2 border-dashed border-night opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10"}
-          %div{class: "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 opacity-0 group-hover:opacity-100 transition-opacity z-20 whitespace-nowrap"}
-            = button_to t(".mark_night_as_sleep"), mark_night_as_sleep_path(date: @date), class: "text-xs px-2 py-0.5 bg-night text-white border border-white/40 cursor-pointer rounded"
-          - slots.each do |slot|
-            = render "activity_slot", slot: slot, current_timestamp: @activity.started_at
-      - else
-        - slots.each do |slot|
-          = render "activity_slot", slot: slot, current_timestamp: @activity.started_at
+  .grid.grid-cols-1.md:grid-cols-2.gap-6
+    - half = (@progress.slots.size / 2.0).ceil
+    - @progress.slots.each_slice(half).each do |column_slots|
+      %div
+        - column_slots.chunk(&:night).each do |is_night, slots|
+          - if is_night
+            %div.relative.group.break-inside-avoid
+              %div{class: "absolute -inset-2 border-2 border-dashed border-night opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10"}
+              %div{class: "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 opacity-0 group-hover:opacity-100 transition-opacity z-20 whitespace-nowrap"}
+                = button_to t(".mark_night_as_sleep"), mark_night_as_sleep_path(date: @date), class: "text-xs px-2 py-0.5 bg-night text-white border border-white/40 cursor-pointer rounded"
+              - slots.each do |slot|
+                = render "activity_slot", slot: slot, current_timestamp: @activity.started_at
+          - else
+            - slots.each do |slot|
+              = render "activity_slot", slot: slot, current_timestamp: @activity.started_at

@@ -17,7 +17,11 @@ module User::Setupable
     def sleep_hour = super.to_i
 
     def night?(hour)
-      hour > sleep_hour || hour < wake_up_hour
+      if sleep_hour < wake_up_hour
+        hour > sleep_hour && hour < wake_up_hour
+      else
+        hour > sleep_hour || hour < wake_up_hour
+      end
     end
 
     def sleep_hours

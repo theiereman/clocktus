@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @date = @activity.started_at.to_date
-    @feed = ProgressPresenter.new(User::Progress.for_the_day(Current.user, @date))
+    @progress = ProgressPresenter.new(User::Progress.for_the_day(Current.user, @date))
   end
 
   def create
