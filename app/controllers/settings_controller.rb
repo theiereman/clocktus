@@ -19,6 +19,6 @@ class SettingsController < ApplicationController
   end
 
   def user_params
-    params.expect(user: [ :activity_duration_in_minutes, :wake_up_hour, :sleep_hour, :locale ])
+    params.expect(user: [ :activity_duration_in_minutes, :wake_up_hour, :sleep_hour, :locale, :reminder_enabled, :reminder_frequency, :reminder_hour ])
   end
 end

@@ -16,6 +16,9 @@ en:
         wake_up_hour: Wake-up time
         sleep_hour: Bedtime
         locale: Language
+        reminder_enabled: Enable reminders
+        reminder_frequency: Frequency
+        reminder_hour: Time
       activity:
         started_at: Start time
       activity/category:
@@ -50,6 +53,9 @@ fr:
         wake_up_hour: Heure de réveil
         sleep_hour: Heure de coucher
         locale: Langue
+        reminder_enabled: Activer les rappels
+        reminder_frequency: Fréquence
+        reminder_hour: Heure
       activity:
         started_at: Heure de début
       activity/category:

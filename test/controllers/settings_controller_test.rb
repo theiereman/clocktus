@@ -27,6 +27,18 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "fr", users(:one).locale
   end
 
+  test "enables reminders and renders the reminder options" do
+    patch settings_url, params: { user: { reminder_enabled: "1", reminder_frequency: "weekly", reminder_hour: 9 } }
+
+    users(:one).reload
+    assert users(:one).reminder_enabled?
+    assert_equal "weekly", users(:one).reminder_frequency
+    assert_equal 9, users(:one).reminder_hour
+
+    get settings_url
+    assert_response :success
+  end
+
   test "rejects an invalid activity duration and redirects with an alert" do
     patch settings_url, params: { user: { activity_duration_in_minutes: 45 } }
 

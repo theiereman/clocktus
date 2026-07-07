@@ -1,8 +1,26 @@
 !!!
-%html
+%html{lang: I18n.locale.to_s}
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
-  %body
-    = yield
+    %meta{charset: "utf-8"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
+    %meta{"http-equiv" => "x-ua-compatible", content: "ie=edge"}/
+    %title Clocktus
+    %link{rel: "preconnect", href: "https://fonts.googleapis.com"}/
+    %link{rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: ""}/
+    %link{rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wdth,wght@75..100,400..800&display=swap"}/
+  %body{style: "margin:0; padding:0; width:100%; background-color:#{MailerHelper::BACKGROUND_COLOR}; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;"}
+    %table{role: "presentation", width: "100%", cellpadding: "0", cellspacing: "0", border: "0", style: "background-color:#{MailerHelper::BACKGROUND_COLOR};"}
+      %tr
+        %td{align: "center", style: "padding:32px 16px;"}
+          %table{role: "presentation", width: "600", cellpadding: "0", cellspacing: "0", border: "0", style: "width:600px; max-width:600px; margin:0 auto;"}
+            %tr
+              %td{align: "center", style: "padding-bottom:24px;"}
+                %div{style: "display:inline-block; position:relative; padding-left:15px;"}
+                  = image_tag attachments["flower.png"].url, alt: "", width: "32", height: "32", style: "position:absolute; top:0px; left:0; border:0; outline:none; text-decoration:none; transform:rotate(-12deg);"
+                  %span{style: "font-family:#{email_font}; font-size:48px; font-weight:800; font-stretch:condensed; letter-spacing:-0.5px; text-transform:uppercase; color:#{MailerHelper::TEXT_COLOR};"}= t("layouts.sessions.brand")
+            %tr
+              %td{style: "background-color:#ffffff; border:3px solid #{MailerHelper::TEXT_COLOR}; padding:32px;"}
+                = yield
+            %tr
+              %td{align: "center", style: "padding-top:24px; font-family:#{email_font}; font-size:12px; line-height:1.5; color:#{MailerHelper::MUTED_COLOR};"}
+                = t("mailer.footer")

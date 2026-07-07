@@ -10,7 +10,14 @@ en:
       icons_by: Icons by
       sign_out: Sign out
     form:
+      global: General
       schedule: Schedule
+      reminders: Reminders
+      reminders_hint: Get an email reminding you to fill in your hours
+      frequencies:
+        daily: Every day
+        weekly: Every week
+        monthly: Every month
       categories: Categories
       categories_hint: Avoid overly specific categories for better statistics
       delete_confirm: Delete this category?
@@ -32,6 +39,12 @@ fr:
     form:
       global: Général
       schedule: Emploi du temps
+      reminders: Rappels
+      reminders_hint: Recevez un e-mail vous rappelant de remplir vos heures
+      frequencies:
+        daily: Tous les jours
+        weekly: Toutes les semaines
+        monthly: Tous les mois
       categories: Catégories
       categories_hint: Évitez les catégories trop précises pour de meilleures statistiques
       delete_confirm: Supprimer cette catégorie ?

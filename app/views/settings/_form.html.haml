@@ -23,6 +23,22 @@
       = f.select :sleep_hour, options_for_select(hour_options, @user.sleep_hour), {}, data: {controller: "autosubmit", action: "change->autosubmit#submit"}, class: "text-center"
 
 
+  %h2.mb-2= t(".reminders")
+  %p.font-normal.normal-case.mb-6{class: "text-text/60"}= t(".reminders_hint")
+  = form_with model: @user, url: settings_path(@user), method: :patch, class: "flex flex-col items-start gap-4" do |f|
+    .flex.items-center.gap-3
+      = f.checkbox :reminder_enabled, checked: @user.reminder_enabled?, data: {controller: "autosubmit", action: "change->autosubmit#submit"}
+      = f.label :reminder_enabled
+
+    - if @user.reminder_enabled?
+      .flex.flex-col.gap-1.items-start
+        = f.label :reminder_frequency
+        = f.select :reminder_frequency, options_for_select(User::Setupable::REMINDER_FREQUENCIES.map { |freq| [ t("settings.form.frequencies.#{freq}"), freq ] }, @user.reminder_frequency), {}, data: {controller: "autosubmit", action: "change->autosubmit#submit"}, class: "text-center"
+
+      .flex.flex-col.gap-1.items-start
+        = f.label :reminder_hour
+        = f.select :reminder_hour, options_for_select(hour_options, @user.reminder_hour), {}, data: {controller: "autosubmit", action: "change->autosubmit#submit"}, class: "text-center"
+
   .flex.justify-between.items-start.mb-2
     %h2= t(".categories")
   %p.font-normal.normal-case.mb-6{class: "text-text/60"}= t(".categories_hint")
