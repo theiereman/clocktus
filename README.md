@@ -6,6 +6,14 @@
     </picture>
 </p>
 
+<p align="center">
+  <a href="./LICENSE"><img alt="Licence" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge"></a>
+  <img alt="Rails" src="https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white">
+  <img alt="Ruby" src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white">
+  <a href="https://github.com/theiereman/clocktus/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/theiereman/clocktus/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://codecov.io/github/theiereman/clocktus"><img alt="codecov" src="https://codecov.io/github/theiereman/clocktus/graph/badge.svg?token=JYLHM1JC65"></a>
+</p>
+
 Clocktus is a deliberately simple time-tracking app that helps you keep an eye on how you spend your everyday life. Each time slot is represented by a block, making logging your activities fast and intuitive. Statistics give you instant feedback on what you've actually done throughout your days.
 
 ## Features
@@ -30,9 +38,7 @@ Know at a glance which day is fully completed or not. It took me some time, but 
 
 ### Setup your preferences to streamline the process
 
-Settings reduced to the essential because who needs more? Actually, if you need more let me know by opening an issue ;)
-
-![Settings view](public/settings_view.png)
+Settings reduced to the essential because who needs more? Actually, if you need more let me know by opening an issue ;
 
 ### Desktop first but mobile friendly
 
