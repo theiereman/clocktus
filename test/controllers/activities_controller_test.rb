@@ -19,6 +19,32 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to activities_url(datetime: Activity.last.ended_at)
   end
 
+  test "rendering an alert when the activity is invalid" do
+    assert_no_difference("Activity.count") do
+      post activities_url, params: { activity: { started_at: "2026-06-10 09:00:00" } }
+    end
+
+    assert_response :success
+    assert_match "turbo-stream", response.body
+  end
+
+  test "should destroy activity" do
+    assert_difference("Activity.count", -1) do
+      delete activity_url(@activity)
+    end
+
+    assert_redirected_to activities_url(datetime: @activity.started_at)
+  end
+
+  test "marks a whole night as sleep" do
+    assert_difference("Activity.count", users(:one).sleep_hours.count) do
+      post mark_night_as_sleep_url(date: "2026-07-01")
+    end
+
+    assert_response :redirect
+    assert Activity.where(user: users(:one), category: activity_categories(:sommeil_one)).any?
+  end
+
   test "a larger slot absorbs finer activities it overlaps" do
     user = users(:one)
     category = activity_categories(:one)

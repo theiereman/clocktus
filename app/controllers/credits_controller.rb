@@ -1,2 +1,0 @@
-class CreditsController < ApplicationController
-end
