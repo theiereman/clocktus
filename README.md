@@ -1,6 +1,12 @@
-# Clocktus - Time Tracker
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="public/logo_full_dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="public/logo_full.png">
+      <img alt="Clocktus Logo" title="Clocktus Logo" src="public/logo_full.png">
+    </picture>
+</p>
 
-Wasn't it your dream to be able to track every hour of your life and extract statistics out of it? Well now it is, and Clocktus makes it very easy!
+Clocktus is a deliberately simple time-tracking app that helps you keep an eye on how you spend your everyday life. Each time slot is represented by a block, making logging your activities fast and intuitive. Statistics give you instant feedback on what you've actually done throughout your days.
 
 ## Features
 
@@ -8,25 +14,25 @@ Wasn't it your dream to be able to track every hour of your life and extract sta
 
 Click on some buttons - _badadim-badaboum_ - your time is tracked.
 
-![Activities view](activities_view.png)
+![Activities view](public/activities_view.png)
 
-### Watch your statistics!
+### Watch your statistics
 
-![Number of activities per category stat](stat_1.png)
+![Number of activities per category stat](public/stat_1.png)
 
-![Activities over time](stat_2.png)
+![Activities over time](public/stat_2.png)
 
 ### Use the calendar view to get an overview
 
 Know at a glance which day is fully completed or not. It took me some time, but I also added the view Excel time-trackers love, you know: **the one with the colored cells**.
 
-![Calendar view](calendar_view.png)
+![Calendar view](public/calendar_view.png)
 
 ### Setup your preferences to streamline the process
 
 Settings reduced to the essential because who needs more? Actually, if you need more let me know by opening an issue ;)
 
-![Settings view](settings_view.png)
+![Settings view](public/settings_view.png)
 
 ### Desktop first but mobile friendly
 
