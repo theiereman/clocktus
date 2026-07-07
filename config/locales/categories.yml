@@ -15,6 +15,16 @@ en:
         updated: Categories updated
         destroyed: Category deleted
         destroy_failed: This category cannot be deleted
+  activities:
+    categories:
+      transfer_activities_modal:
+        title: Delete category
+        close: Close
+        hint: '"%{label}" is linked to activities. What would you like to do?'
+        transfer_option: Transfer its activities to another category
+        delete_option: Delete all its activities
+        cancel: Cancel
+        submit: Confirm
 fr:
   activity:
     category:
@@ -31,3 +41,13 @@ fr:
         updated: Catégories mises à jour
         destroyed: Catégorie supprimée
         destroy_failed: Impossible de supprimer cette catégorie
+  activities:
+    categories:
+      transfer_activities_modal:
+        title: Supprimer la catégorie
+        close: Fermer
+        hint: '« %{label} » est liée à des activités. Que souhaitez-vous faire ?'
+        transfer_option: Transférer ses activités vers une autre catégorie
+        delete_option: Supprimer toutes ses activités
+        cancel: Annuler
+        submit: Confirmer

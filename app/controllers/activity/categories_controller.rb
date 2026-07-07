@@ -20,6 +20,11 @@ class Activity::CategoriesController < ApplicationController
   end
 
   def destroy
+    if @activity_category.activities.any?
+      render turbo_stream: turbo_stream.update(:modals, partial: "activities/categories/transfer_activities_modal", locals: { category: @activity_category })
+      return
+    end
+
     @activity_category.destroy!
     redirect_to settings_path, notice: t("activity.categories.flash.destroyed")
   rescue ActiveRecord::RecordNotDestroyed

@@ -27,4 +27,13 @@ class Activity::CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to settings_path
   end
+
+  test "destroying a category with activities renders the transfer modal without deleting" do
+    assert_no_difference([ "Activity::Category.count", "Activity.count" ]) do
+      delete activity_category_url(@activity_category)
+    end
+
+    assert_response :success
+    assert_match "transfer-activities-modal", @response.body
+  end
 end

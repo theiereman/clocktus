@@ -1,0 +1,27 @@
+-# locals: (category:)
+
+%dialog#transfer-activities-modal.border-3.border-text.p-6.max-w-sm.md:max-w-xl.w-full.m-auto.bg-background.overflow-hidden{ class: "backdrop:bg-black/50", data: { controller: "modal element-removal", action: "close->element-removal#remove" } }
+  .flex.items-center.justify-between.mb-4
+    %p.font-extrabold.uppercase.text-lg= t(".title")
+    %button{ type: "button", aria: { label: t(".close") }, data: { action: "modal#close" }, class: "p-0! hover:bg-transparent! hover:text-text!" }
+      = lucide_icon "x", class: "size-6"
+
+  %p.font-normal.normal-case.mb-6{ class: "text-text/60" }= t(".hint", label: category.label)
+
+  = form_with url: transfer_activities_path, data: { controller: "transfer-activities" } do |f|
+    = f.hidden_field :source_category_id, value: category.id
+
+    .flex.flex-col.gap-4
+      %label.flex.items-start.gap-3.cursor-pointer.normal-case.font-normal
+        = radio_button_tag :mode, "transfer", true, data: { transfer_activities_target: "mode", action: "transfer-activities#toggle" }, class: "mt-1"
+        .flex.flex-col.gap-2.flex-1
+          %span.font-bold= t(".transfer_option")
+          = f.select :target_category_id, options_for_select(Current.user.activity_categories.where.not(id: category.id).map { |c| [ c.label, c.id ] }), {}, data: { transfer_activities_target: "target" }, class: "w-fit"
+
+      %label.flex.items-start.gap-3.cursor-pointer.normal-case.font-normal
+        = radio_button_tag :mode, "delete", false, data: { transfer_activities_target: "mode", action: "transfer-activities#toggle" }, class: "mt-1"
+        %span.font-bold.text-red-600= t(".delete_option")
+
+    .flex.justify-end.gap-3.mt-6
+      %button{ type: "button", data: { action: "modal#close" }, class: "normal-case!" }= t(".cancel")
+      = f.submit t(".submit"), class: "bg-primary!"

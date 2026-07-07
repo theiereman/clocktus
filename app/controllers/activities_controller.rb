@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_variables, except: [ :mark_night_as_sleep, :destroy ]
+  before_action :set_variables, except: [ :mark_night_as_sleep, :destroy, :transfer ]
   before_action :set_activity, only: [ :destroy ]
 
   def index
@@ -24,6 +24,21 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     redirect_to activities_path(datetime: @activity.started_at)
+  end
+
+  def transfer
+    source = Current.user.activity_categories.find(params[:source_category_id])
+
+    if params[:mode] == "transfer"
+      target = Current.user.activity_categories.find(params[:target_category_id])
+      source.activities.update_all(activity_category_id: target.id)
+    end
+
+    source.destroy!
+    flash[:notice] = t("activity.categories.flash.destroyed")
+    render turbo_stream: turbo_stream.action(:redirect, settings_path)
+  rescue ActiveRecord::RecordNotDestroyed
+    render turbo_stream: helpers.turbo_flash_toast(:alert, t("activity.categories.flash.destroy_failed"))
   end
 
   def mark_night_as_sleep

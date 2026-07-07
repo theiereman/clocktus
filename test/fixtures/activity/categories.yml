@@ -5,6 +5,11 @@ one:
   color: "#8ff0a4"
   user: one
 
+three:
+  label: Travail
+  color: "#dc8add"
+  user: one
+
 two:
   label: Loisirs
   color: "#f6d32d"

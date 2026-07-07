@@ -63,4 +63,31 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_equal Time.zone.local(2026, 6, 10, 9, 0), coarse_activity.started_at
     assert_equal Time.zone.local(2026, 6, 10, 10, 0), coarse_activity.ended_at
   end
+
+  test "transferring reassigns activities to the target category and deletes the source" do
+    source = activity_categories(:one)
+    target = activity_categories(:three)
+    activity = activities(:one)
+
+    assert_no_difference("Activity.count") do
+      post transfer_activities_url, params: { source_category_id: source.id, mode: "transfer", target_category_id: target.id }
+    end
+
+    assert_response :success
+    assert_match %r{action="redirect".*target="#{settings_path}"}, response.body
+    assert_not Activity::Category.exists?(source.id)
+    assert_equal target.id, activity.reload.activity_category_id
+  end
+
+  test "deleting removes the source category and all its activities" do
+    source = activity_categories(:one)
+
+    assert_difference("Activity.count", -1) do
+      post transfer_activities_url, params: { source_category_id: source.id, mode: "delete" }
+    end
+
+    assert_response :success
+    assert_match %r{action="redirect".*target="#{settings_path}"}, response.body
+    assert_not Activity::Category.exists?(source.id)
+  end
 end

@@ -1,6 +1,6 @@
 class Activity::Category < ApplicationRecord
   belongs_to :user
-  has_many :activities, foreign_key: "activity_category_id", dependent: :restrict_with_error
+  has_many :activities, foreign_key: "activity_category_id", dependent: :destroy
 
   scope :sleep, -> { where(protected: true).first }
 
