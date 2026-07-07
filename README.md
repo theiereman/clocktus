@@ -1,7 +1,5 @@
 # Clocktus - Time Tracker
 
-## Who thought you'd be your own big brother?
-
 Wasn't it your dream to be able to track every hour of your life and extract statistics out of it? Well now it is, and Clocktus makes it very easy!
 
 ## Features
