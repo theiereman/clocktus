@@ -1,6 +1,6 @@
 - content_for :title, t(".title")
 
-.border-5.p-6
+.border-5.p-6.bg-background
   = form_with url: session_path, method: :post, class: "flex flex-col gap-8 items-center text-center" do |form|
     %div
       %h2= t(".heading")
