@@ -15,7 +15,8 @@
       = render "statistics/filters"
 
   %h2= t(".activities_per_category")
-  .mb-6= column_chart @count_per_category, legend: :bottom, library: { grouped: false, scales: { x: { ticks: { display: false } } }, interaction: { mode: "nearest", intersect: true } }
+  .mb-6{ data: { controller: "resizable-bar-chart" } }
+    = column_chart @count_per_category, legend: :bottom, library: { grouped: false, scales: { x: { ticks: { display: false } } }, interaction: { mode: "nearest", intersect: true } }
 
   .overflow-x-auto.mb-12
     %table.w-full.text-sm
