@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
 const DIMMED_OPACITY = 0.15;
+const LEGEND_ITEM_PADDING = 6;
+const LEAVE_DELAY_MS = 120;
 
 export default class extends Controller {
   static values = { resizeOnHide: { type: Boolean, default: false } };
@@ -11,6 +13,7 @@ export default class extends Controller {
 
   disconnect() {
     if (this.retryFrame) cancelAnimationFrame(this.retryFrame);
+    clearTimeout(this.leaveTimer);
   }
 
   waitForChart() {
@@ -38,12 +41,22 @@ export default class extends Controller {
     this.originalDatasets = chartObject.data.datasets.map((dataset) => [...dataset.data]);
     this.hiddenIndices = new Set();
 
-    legend.onHover = (_event, legendItem) => this.dim(chartObject, legendItem.datasetIndex);
-    legend.onLeave = () => this.undim(chartObject);
+    // tighten the gap between legend items so crossing it doesn't briefly leave every item
+    legend.labels = { ...legend.labels, padding: LEGEND_ITEM_PADDING };
+
+    legend.onHover = (_event, legendItem) => {
+      clearTimeout(this.leaveTimer);
+      this.dim(chartObject, legendItem.datasetIndex);
+    };
+    // delay the undim so hopping from one item straight to the next doesn't flash everything back on
+    legend.onLeave = () => {
+      this.leaveTimer = setTimeout(() => this.undim(chartObject), LEAVE_DELAY_MS);
+    };
     legend.onClick = (_event, legendItem) => this.toggle(chartObject, legendItem.datasetIndex);
   }
 
   toggle(chartObject, index) {
+    clearTimeout(this.leaveTimer);
     this.hiddenIndices.has(index) ? this.hiddenIndices.delete(index) : this.hiddenIndices.add(index);
     chartObject.getDatasetMeta(index).hidden = this.hiddenIndices.has(index);
 
