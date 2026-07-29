@@ -15,7 +15,7 @@
       = render "statistics/filters"
 
   %h2= t(".activities_per_category")
-  .mb-6{ data: { controller: "resizable-bar-chart" } }
+  .mb-6{ data: { controller: "chart-legend", chart_legend_resize_on_hide_value: true } }
     = column_chart @count_per_category, legend: :bottom, library: { grouped: false, scales: { x: { ticks: { display: false } } }, interaction: { mode: "nearest", intersect: true } }
 
   .overflow-x-auto.mb-12
@@ -36,7 +36,8 @@
             %td.py-2.text-right= "#{row[:percentage]}%"
 
   %h2= t(".activities_over_time")
-  .my-6= line_chart @hours_per_category_over_time, legend: :bottom, dataset: { tension: 0.3 }
+  .my-6{ data: { controller: "chart-legend" } }
+    = line_chart @hours_per_category_over_time, legend: :bottom, dataset: { tension: 0.3 }
 
   %h2= t(".activities_over_time_per_category")
   .my-6.grid.grid-cols-1.gap-6{ class: "sm:grid-cols-2 lg:grid-cols-3" }
