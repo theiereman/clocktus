@@ -15,6 +15,9 @@ en:
         from: From
         to: To
         full_days_only: Full days only
+        today: Today
+        this_month: This month
+        this_year: This year
 
 fr:
   statistics:
@@ -33,3 +36,6 @@ fr:
         from: Du
         to: Au
         full_days_only: Jours complets uniquement
+        today: Aujourd'hui
+        this_month: Ce mois-ci
+        this_year: Cette année

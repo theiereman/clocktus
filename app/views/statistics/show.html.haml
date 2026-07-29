@@ -1,18 +1,19 @@
+
 = content_for :title, t(".title")
 
-.sticky.flex.items-center.justify-between.mb-12
-  %h1= t(".title")
-  - if @shareable
-    = button_to user_profile_link_path, class: "flex gap-2 items-center" do
-      = lucide_icon "share-2", class: "size-4"
-      .hidden.md:block= t(".share")
+= turbo_frame_tag "test" do
+  .flex.items-center.justify-between.mb-12
+    %h1= t(".title")
+    - if @shareable
+      = button_to user_profile_link_path, class: "flex gap-2 items-center" do
+        = lucide_icon "share-2", class: "size-4"
+        .hidden.md:block= t(".share")
 
 
-.mb-6
-  = render "ui/container", title: t('.filters.title') do 
-    = render "statistics/filters"
+  .mb-6
+    = render "ui/container", title: t('.filters.title') do 
+      = render "statistics/filters"
 
-= turbo_frame_tag :user_statistics do
   %h2= t(".activities_per_category")
   .mb-6= column_chart @count_per_category, legend: :bottom, library: { grouped: false, scales: { x: { ticks: { display: false } } }, interaction: { mode: "nearest", intersect: true } }
 
