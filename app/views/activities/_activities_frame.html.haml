@@ -1,8 +1,8 @@
 .flex.flex-col.gap-6.justify-between.items-start.mb-10
   %div
     %span= t(".prompt")
-    .flex.flex-col.lg:flex-row.lg:gap-4.lg:items-end
-      %h1= l(@date, format: :long)
+    .flex.flex-col
+      %h1= l(@date, format: "%A %d %B")
       %h2= t(".time_range", from: format_time(@activity.started_at), to: format_time(@activity.ended_at))
   = render "date_navigation"
 
