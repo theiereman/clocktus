@@ -24,9 +24,9 @@
       = render "statistics/global_block", title: t(".activities_registered") , value: @number_of_activities
       = render "statistics/global_block", title: t(".days_completed") , value: @days_completed
 
-  #activities-per-category
+  #activities-per-category{ data: { controller: "chart-legend", chart_legend_resize_on_hide_value: true } }
     %h2.mb-4= t(".activities_per_category")
-    .mb-2{ data: { controller: "chart-legend", chart_legend_resize_on_hide_value: true } }
+    .mb-2
       = column_chart @count_per_category, legend: false, library: { grouped: false, scales: { x: { ticks: { display: false } } }, interaction: { mode: "nearest", intersect: true } }
 
     .overflow-x-auto
@@ -37,8 +37,8 @@
             %th.py-2.pr-4.font-medium.text-right= t(".table.hours")
             %th.py-2.font-medium.text-right= t(".table.percentage")
         %tbody
-          - @top_categories.each do |row|
-            %tr.border-b.border-gray-100
+          - @top_categories.each_with_index do |row, index|
+            %tr.border-b.border-gray-100.cursor-pointer.select-none{ data: { chart_legend_target: "row", chart_legend_index_param: index, action: "mouseenter->chart-legend#rowHover mouseleave->chart-legend#rowLeave click->chart-legend#rowClick" } }
               %td.py-2.pr-4
                 .flex.items-center.gap-2
                   %span.inline-block.size-4.border-3.border-text.shrink-0{ style: "background-color: #{row[:color]}" }
