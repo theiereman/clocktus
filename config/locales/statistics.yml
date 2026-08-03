@@ -22,6 +22,7 @@ en:
         to: To
         full_days_only: Full days only
         today: Today
+        this_week: This week
         this_month: This month
         this_year: This year
 
@@ -49,5 +50,6 @@ fr:
         to: Au
         full_days_only: Jours complets uniquement
         today: Aujourd'hui
+        this_week: Cette semaine
         this_month: Ce mois-ci
         this_year: Cette année

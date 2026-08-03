@@ -10,6 +10,8 @@
   .flex.gap-2.flex-col.md:flex-row
     = link_to statistics_path(from: Date.current, to: Date.current), class: "border-3 md:w-fit #{"bg-primary" if filtered_on_today?}" do
       = t("statistics.show.filters.today")
+    = link_to statistics_path(from: Date.current.beginning_of_week, to: Date.current.end_of_week), class: "border-3 md:w-fit #{"bg-primary" if filtered_on_week?}" do
+      = t("statistics.show.filters.this_week")
     = link_to statistics_path(from: Date.current.beginning_of_month, to: Date.current.end_of_month), class: "border-3 md:w-fit #{"bg-primary" if filtered_on_month?}" do
       = t("statistics.show.filters.this_month")
     = link_to statistics_path(from: Date.current.beginning_of_year, to: Date.current.end_of_year), class: "border-3 md:w-fit #{"bg-primary" if filtered_on_year?}" do
