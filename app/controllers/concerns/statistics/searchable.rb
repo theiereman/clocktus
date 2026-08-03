@@ -2,6 +2,7 @@ module Statistics::Searchable
   extend ActiveSupport::Concern
 
   included do
+    helper_method :single_day?
     helper_method :filtered_on_today?
     helper_method :filtered_on_month?
     helper_method :filtered_on_year?
@@ -12,6 +13,10 @@ module Statistics::Searchable
     @to = params[:to]&.to_date || user.activities.maximum(:started_at)&.to_date || Date.current
 
     progress = User::Progress.between(user, @from, @to).activities
+  end
+
+  def single_day?
+    @from == @to
   end
 
   def filtered_on_today?
