@@ -3,10 +3,10 @@ import { Controller } from "@hotwired/stimulus";
 const DIMMED_OPACITY = 0.15;
 const LEGEND_ITEM_PADDING = 6;
 const LEAVE_DELAY_MS = 120;
-const HIDDEN_ROW_CLASSES = [ "opacity-40", "line-through" ];
+const HIDDEN_ROW_CLASSES = ["opacity-40", "line-through"];
 
 export default class extends Controller {
-  static targets = [ "row" ];
+  static targets = ["row"];
   static values = { resizeOnHide: { type: Boolean, default: false } };
 
   connect() {
@@ -22,7 +22,7 @@ export default class extends Controller {
     const chartElement = this.element.querySelector("[id]");
     const chart = chartElement && window.Chartkick?.charts[chartElement.id];
 
-    if (chart) {
+    if (chart && chart.getElement() === chartElement) {
       this.setup(chart);
     } else {
       this.retryFrame = requestAnimationFrame(() => this.waitForChart());
@@ -40,7 +40,9 @@ export default class extends Controller {
       pointHoverBackgroundColor: dataset.pointHoverBackgroundColor,
     }));
     this.originalLabels = [...this.chartObject.data.labels];
-    this.originalDatasets = this.chartObject.data.datasets.map((dataset) => [...dataset.data]);
+    this.originalDatasets = this.chartObject.data.datasets.map((dataset) => [
+      ...dataset.data,
+    ]);
     this.hiddenIndices = new Set();
 
     // tighten the gap between legend items so crossing it doesn't briefly leave every item
@@ -54,7 +56,8 @@ export default class extends Controller {
     legend.onLeave = () => {
       this.leaveTimer = setTimeout(() => this.undim(), LEAVE_DELAY_MS);
     };
-    legend.onClick = (_event, legendItem) => this.toggle(legendItem.datasetIndex);
+    legend.onClick = (_event, legendItem) =>
+      this.toggle(legendItem.datasetIndex);
   }
 
   rowHover({ params: { index } }) {
@@ -72,17 +75,24 @@ export default class extends Controller {
 
   toggle(index) {
     clearTimeout(this.leaveTimer);
-    this.hiddenIndices.has(index) ? this.hiddenIndices.delete(index) : this.hiddenIndices.add(index);
-    this.chartObject.getDatasetMeta(index).hidden = this.hiddenIndices.has(index);
+    this.hiddenIndices.has(index)
+      ? this.hiddenIndices.delete(index)
+      : this.hiddenIndices.add(index);
+    this.chartObject.getDatasetMeta(index).hidden =
+      this.hiddenIndices.has(index);
 
     // clears any dim left over from hovering the item we just clicked
     this.resetColors();
     this.syncRowStates();
 
     if (this.resizeOnHideValue) {
-      this.chartObject.data.labels = this.originalLabels.filter((_, i) => !this.hiddenIndices.has(i));
+      this.chartObject.data.labels = this.originalLabels.filter(
+        (_, i) => !this.hiddenIndices.has(i),
+      );
       this.chartObject.data.datasets.forEach((dataset, datasetIndex) => {
-        dataset.data = this.originalDatasets[datasetIndex].filter((_, i) => !this.hiddenIndices.has(i));
+        dataset.data = this.originalDatasets[datasetIndex].filter(
+          (_, i) => !this.hiddenIndices.has(i),
+        );
       });
     }
 
@@ -102,7 +112,7 @@ export default class extends Controller {
         return;
       }
 
-      Object.entries(original).forEach(([ key, value ]) => {
+      Object.entries(original).forEach(([key, value]) => {
         if (value) dataset[key] = this.withAlpha(value, DIMMED_OPACITY);
       });
     });
@@ -123,21 +133,25 @@ export default class extends Controller {
 
   syncRowStates() {
     this.rowTargets.forEach((row) => {
-      const hidden = this.hiddenIndices.has(Number(row.dataset.chartLegendIndexParam));
-      HIDDEN_ROW_CLASSES.forEach((className) => row.classList.toggle(className, hidden));
+      const hidden = this.hiddenIndices.has(
+        Number(row.dataset.chartLegendIndexParam),
+      );
+      HIDDEN_ROW_CLASSES.forEach((className) =>
+        row.classList.toggle(className, hidden),
+      );
     });
   }
 
   withAlpha(color, alpha) {
     const hexMatch = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
     if (hexMatch) {
-      const [ , r, g, b ] = hexMatch;
+      const [, r, g, b] = hexMatch;
       return `rgba(${parseInt(r, 16)}, ${parseInt(g, 16)}, ${parseInt(b, 16)}, ${alpha})`;
     }
 
     const rgbaMatch = /^rgba?\((\d+),\s*(\d+),\s*(\d+)/i.exec(color);
     if (rgbaMatch) {
-      const [ , r, g, b ] = rgbaMatch;
+      const [, r, g, b] = rgbaMatch;
       return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
