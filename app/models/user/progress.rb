@@ -1,5 +1,5 @@
 class User::Progress
-  attr_reader :user, :activities
+  attr_reader :user, :activities, :range
 
   private def initialize(user, range)
     @user = user
@@ -18,24 +18,24 @@ class User::Progress
     new(user, date.beginning_of_month.beginning_of_day..date.end_of_month.end_of_day)
   end
 
-  def date
-    @range.begin.to_date
-  end
-
-  def slot_count
-    Activity::MINUTES_IN_A_DAY / user.activity_duration_in_minutes
+  def self.since_start(user)
+    new(user, user.activities.order(started_at: :asc).first.started_at.to_date.beginning_of_day..Date.current.end_of_day)
   end
 
   def filled_slots_on(day)
     slots_for(day).count { |_starts_at, activity| activity }
   end
 
-  def all_activities_done?(date: nil)
-    filled_slots_on(date || self.date) >= slot_count
+  def day_completed?(day)
+    filled_slots_on(day) >= @user.number_of_activity_slots_per_day
+  end
+
+  def number_of_days_completed
+    @range.first.to_date.upto(@range.last.to_date).count { day_completed?(it) }
   end
 
   def remaining_activities_count(date:)
-    [ slot_count - filled_slots_on(date), 0 ].max
+    [ @user.number_of_activity_slots_per_day - filled_slots_on(date), 0 ].max
   end
 
   def slots_for(day)

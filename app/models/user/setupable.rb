@@ -34,8 +34,8 @@ module User::Setupable
       24.times.select { night?(it) }
     end
 
-    def activity_duration_in_minutes
-      (super || 60).to_i
+    def number_of_activity_slots_per_day
+      Activity::MINUTES_IN_A_DAY / activity_duration_in_minutes
     end
 
     def snap_to_activity_slot(time)
@@ -43,6 +43,10 @@ module User::Setupable
       time.beginning_of_day + (index * activity_duration_in_minutes).minutes
     end
 
+    def activity_duration_in_minutes
+      (super || 60).to_i
+    end
+    
     def reminder_enabled?
       ActiveModel::Type::Boolean.new.cast(reminder_enabled)
     end

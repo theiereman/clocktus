@@ -3,9 +3,15 @@ en:
     show:
       title: Statistics
       share: Share
-      activities_per_category: Number of activities per category
-      activities_over_time: Activities over time
-      activities_over_time_per_category: Activities over time by category
+      global: Global
+      not_affected_by_filters: not affected by filters
+      signup_date: Account creation
+      number_of_days_since_signup: days since registration
+      activities_registered: Activities registered
+      days_completed: Days completed
+      activities_per_category: Number of hours per category
+      activities_over_time: Hours spent over time
+      activities_over_time_per_category: Hours spent over time by category
       table:
         category: Category
         hours: Hours
@@ -24,9 +30,15 @@ fr:
     show:
       title: Statistiques
       share: Partager
-      activities_per_category: Nombre d'activités par catégorie
-      activities_over_time: Activités au cours du temps
-      activities_over_time_per_category: Activités au cours du temps par catégorie
+      global: Général
+      not_affected_by_filters: non affecté par les filtres
+      signup_date: Création du compte
+      number_of_days_since_signup: Jours depuis l'inscription
+      activities_registered: Activités enregistrées
+      days_completed: Jours complétés
+      activities_per_category: Nombre d'heures par catégorie
+      activities_over_time: Heures passées au cours du temps
+      activities_over_time_per_category: Heures passées au cours du temps par catégorie
       table:
         category: Catégorie
         hours: Heures

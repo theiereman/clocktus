@@ -5,6 +5,7 @@ class StatisticsController < ApplicationController
   def show
     @shareable = true
     user = Current.user
-    present_statistics_for(user, filtered_activities(user))
+    present_activities_statistics_for(user, filtered_activities(user))
+    present_global_statistics_for(user)
   end
 end

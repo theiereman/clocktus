@@ -34,7 +34,7 @@ class User::ProgressTest < ActiveSupport::TestCase
     @user.update!(activity_duration_in_minutes: 60)
     24.times { |h| @user.activities.create!(started_at: Time.zone.local(2026, 6, 10, h, 0), category: @category) }
 
-    assert progress.all_activities_done?(date: @date)
+    assert progress.day_completed?(@date)
     assert_equal 0, progress.remaining_activities_count(date: @date)
   end
 end

@@ -29,11 +29,11 @@ class MonthlyCalendar
 
   def init_days
     @days = []
-    slots_per_day = @progress.slot_count
+    slots_per_day = @progress.user.number_of_activity_slots_per_day
     days_count.times do |i|
       date = Date.new(@date.year, @date.month, i+1)
       filled = @progress.filled_slots_on(date)
-      @days << Day.new(date, filled >= slots_per_day, filled, slots_per_day)
+      @days << Day.new(date, filled, slots_per_day)
     end
   end
 end
