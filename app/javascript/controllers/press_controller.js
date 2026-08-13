@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    this.element.style.transition = "transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 200ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+    this.element.style.transition = "transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 200ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 150ms ease, border-color 150ms ease"
   }
 
   press() {

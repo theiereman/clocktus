@@ -13,7 +13,7 @@
         = form.hidden_field :id, value: @activity&.id
         = form.hidden_field :activity_category_id, value: category.id
         = form.hidden_field :started_at, value: @activity.started_at
-        = form.submit category.label, class: "size-full p-2! truncate md:py-4! hover:bg-(--cat-hover)! cursor-pointer", data: { controller: "press", action: "pointerdown->press#press pointerup->press#release pointercancel->press#release pointerleave->press#release" }, style: "background-color: #{category.color}; color: #{contrasted_text_color(category.color)}; border: 5px solid #{darken_color(category.color)}; --cat-hover: #{darken_color(category.color)}"
+        = form.submit category.label, class: "relative size-full p-2! my-1 truncate md:py-4! border-2 border-transparent hover:border-(--cat-dark)! hover:shadow-[4px_4px_0px_var(--cat-dark)]! hover:z-10 cursor-pointer", data: { controller: "press", action: "pointerdown->press#press pointerup->press#release pointercancel->press#release pointerleave->press#release" }, style: "background-color: #{category.color}; color: #{contrasted_text_color(category.color)}; --cat-dark: #{darken_color(category.color)}"
 
   .mx-auto= render "current_selected_activity_preview", current_timestamp: @activity.started_at, slots: @progress.slots
 
