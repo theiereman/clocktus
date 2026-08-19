@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :activity_categories, class_name: "Activity::Category", dependent: :destroy
   has_many :activities
+  has_many :comments, dependent: :destroy
   has_one :user_profile_link, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }

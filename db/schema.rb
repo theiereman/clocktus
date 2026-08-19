@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_01_132520) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_19_141934) do
   create_table "activities", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
@@ -30,6 +30,26 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_01_132520) do
     t.boolean "protected", default: false
     t.string "color", default: "#6b7280"
     t.index ["user_id"], name: "index_activity_categories_on_user_id"
+  end
+
+  create_table "activity_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "message"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activity_comments_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "date", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "date"], name: "index_comments_on_user_id_and_date", unique: true
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "magic_links", force: :cascade do |t|
@@ -74,6 +94,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_01_132520) do
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "users"
   add_foreign_key "activity_categories", "users"
+  add_foreign_key "activity_comments", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "magic_links", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "user_profile_links", "users"

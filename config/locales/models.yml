@@ -8,6 +8,9 @@ en:
       activity/category:
         one: category
         other: categories
+      comment:
+        one: comment
+        other: comments
       user: user
     attributes:
       user:
@@ -24,6 +27,9 @@ en:
       activity/category:
         label: Label
         color: Color
+      comment:
+        body: Note
+        date: Date
     errors:
       models:
         activity:
@@ -45,6 +51,9 @@ fr:
       activity/category:
         one: catégorie
         other: catégories
+      comment:
+        one: commentaire
+        other: commentaires
       user: utilisateur
     attributes:
       user:
@@ -61,6 +70,9 @@ fr:
       activity/category:
         label: Libellé
         color: Couleur
+      comment:
+        body: Note
+        date: Date
     errors:
       models:
         activity:

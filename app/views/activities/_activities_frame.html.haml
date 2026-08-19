@@ -36,3 +36,5 @@
           - else
             - slots.each do |slot|
               = render "activity_slot", slot: slot, current_timestamp: @activity.started_at
+
+  = render "comment_form", date: @date, comment: @comment

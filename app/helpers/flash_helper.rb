@@ -1,7 +1,7 @@
 module FlashHelper
   TOAST_STYLES = {
-    "notice" => "bg-background text-text border-text",
-    "alert"  => "bg-primary text-text border-text"
+    "notice" => "bg-primary text-text border-text",
+    "alert"  => "bg-theme-red text-background"
   }.freeze
 
   def flash_toasts

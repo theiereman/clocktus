@@ -1,0 +1,15 @@
+# Free-text note attached to a day, shown at the bottom of the day view.
+en:
+  activities:
+    comment_form:
+      title: Notes
+      placeholder: Add a note about this day...
+      saved: Note saved
+      deleted: Note deleted
+fr:
+  activities:
+    comment_form:
+      title: Notes
+      placeholder: Ajoutez une note sur cette journée...
+      saved: Note enregistrée
+      deleted: Note supprimée

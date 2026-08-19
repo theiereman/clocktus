@@ -12,7 +12,8 @@
   --color-text: #3b3b3b;
   --color-background: #fffcf4;
   --color-primary: #ffb900;
-  --color-custom-green: #00ffa9;
+  --color-theme-green: #00ffa9;
+  --color-theme-red: #f2542d;
   --color-night: #2d3966;
   --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
 }
@@ -52,6 +53,7 @@ a:not(.unstyled) {
 }
 
 select,
+textarea,
 input:not([type="submit"]) {
   @apply border-3 border-text bg-white py-1 px-3 focus:outline-none focus:border-3 focus:border-primary;
 }
