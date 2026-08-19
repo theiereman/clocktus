@@ -11,11 +11,11 @@
       %input.flex-1{ hint: "Aucun lien", type: "text", value: link.present? ? public_statistics_url(token: link.token) : "", readonly: true, data: { clipboard_target: "source" } }
       %p.text-xs.text-gray-400.ms-1= t('.disclaimer')
     .flex.items-start
-      %button{ type: "button", data: { action: "mouseover->tooltip#show mouseout->tooltip#hide click->clipboard#copy", clipboard_target: "button", clipboard_copied_label: t(".copied") }, class: "tooltip p-2!"}
+      %button{ type: "button", data: { action: "mouseenter->tooltip#show mouseleave->tooltip#hide focusin->tooltip#show focusout->tooltip#hide click->clipboard#copy", clipboard_target: "button", clipboard_copied_label: t(".copied") }, class: "tooltip p-2!"}
         = lucide_icon "clipboard-copy"
-        .tooltiptext= t(".copy")
-      = button_to user_profile_link_path, method: :patch, data: { action: "mouseover->tooltip#show mouseout->tooltip#hide", turbo_confirm: t(".regenerate_confirm") }, class: "tooltip p-2!" do
+        .tooltiptext{data: {tooltip_target: "text"}}= t(".copy")
+      = button_to user_profile_link_path, method: :patch, data: { action: "mouseenter->tooltip#show mouseleave->tooltip#hide focusin->tooltip#show focusout->tooltip#hide", turbo_confirm: t(".regenerate_confirm") }, class: "tooltip p-2!" do
         = lucide_icon "refresh-cw"
-        .tooltiptext= t(".regenerate")
+        .tooltiptext{data: {tooltip_target: "text"}}= t(".regenerate")
 
   = button_to t(".revoke"), user_profile_link_path, method: :delete, class: "p-0! normal-case! font-normal! text-sm underline hover:bg-transparent! hover:text-red-500!", data: { turbo_confirm: t(".revoke_confirm") }

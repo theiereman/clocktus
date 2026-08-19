@@ -33,6 +33,6 @@
           - activities.slots_for(day.date).each do |starts_at, activity|
             .w-full.tooltip{style: "background-color: #{activity&.category&.color}", data: {action: "mouseover->tooltip#show mouseout->tooltip#hide"}}
               - if activity
-                %span.tooltiptext= "#{activity.category.label} #{t("common.from")} #{format_time(activity.started_at)} #{t("common.to")} #{format_time(activity.ended_at)}"
+                %span.tooltiptext{data: {"tooltip-target": "text"}}= "#{activity.category.label} #{t("common.from")} #{format_time(activity.started_at)} #{t("common.to")} #{format_time(activity.ended_at)}"
 
         .w-12.text-end.font-thin= number_to_percentage(day.percentage_done, precision: 0)

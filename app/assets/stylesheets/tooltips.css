@@ -8,25 +8,23 @@
 .tooltip .tooltiptext {
   font-size: 0.75rem;
   visibility: hidden;
-  width: 120px;
+  width: max-content;
+  max-width: min(80vw, 280px);
   background-color: var(--color-text);
   color: var(--color-background);
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 8px;
 
-  /* Position the tooltip text */
   position: absolute;
   z-index: 1;
   top: 125%;
   left: 50%;
-  margin-left: -60px;
+  transform: translateX(-50%);
 
-  /* Fade in tooltip */
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-/* Tooltip arrow */
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -38,15 +36,23 @@
   border-color: transparent transparent var(--color-text) transparent;
 }
 
-/* Default: pure-CSS hover (used wherever the tooltip isn't clipped). */
+.tooltip .tooltiptext.tooltiptext--visible::after {
+  content: none;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-text);
+  transform: rotate(45deg);
+}
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
 
-/* JS-driven: the tooltip_controller switches the text to `position: fixed`
-   (set inline) so it escapes an ancestor's overflow-hidden, e.g. the
-   calendar's collapsible rows. */
 .tooltip .tooltiptext.tooltiptext--visible {
   visibility: visible;
   opacity: 1;
