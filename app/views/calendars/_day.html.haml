@@ -3,5 +3,7 @@
 = link_to activities_path(date: day.date), class:"relative flex flex-col px-1! md:px-3! border-2 border-text #{"disabled" if day.date > Date.current}" do
   .absolute.inset-0{style: "background-color: var(--color-theme-green); mask-image: linear-gradient(to right, black #{day.percentage_done}%, transparent #{day.percentage_done}%); -webkit-mask-image: linear-gradient(to right, black #{day.percentage_done}%, transparent #{day.percentage_done}%)"}
   .relative.z-10.flex.gap-1.items-center.justify-between
-    %span= day.date.day
+    .flex.items-center.justify-between.w-full.gap-1
+      %span= day.date.day
+      = lucide_icon mood_icon_for(day.mood.level), class: "size-4" if day.mood
     = lucide_icon :check,class: "size-4" if day.completed?

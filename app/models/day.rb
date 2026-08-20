@@ -1,10 +1,11 @@
 class Day
-  attr_reader :date
+  attr_reader :date, :mood
 
-  def initialize(date, filled_slots, total_slots)
+  def initialize(date, filled_slots, total_slots, mood = nil)
     @date = date
     @filled_slots = filled_slots
     @total_slots = total_slots
+    @mood = mood
   end
 
   def percentage_done

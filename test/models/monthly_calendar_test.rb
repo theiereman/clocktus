@@ -44,6 +44,20 @@ class MonthlyCalendarTest < ActiveSupport::TestCase
     assert_equal 0, day.percentage_done
   end
 
+  test "attaches the mood recorded on a given day" do
+    mood = @user.moods.create!(date: Date.new(2026, 6, 10), level: :great)
+
+    day = calendar.days.find { |d| d.date == Date.new(2026, 6, 10) }
+
+    assert_equal mood, day.mood
+  end
+
+  test "a day without a mood has none attached" do
+    day = calendar.days.find { |d| d.date == Date.new(2026, 6, 10) }
+
+    assert_nil day.mood
+  end
+
   test "completed_activities_count sums the month's activities" do
     july = Date.new(2026, 7, 3)
     3.times { |h| @user.activities.create!(started_at: Time.zone.local(2026, 7, 1, h, 0), category: @category) }

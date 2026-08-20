@@ -23,4 +23,14 @@ class DayTest < ActiveSupport::TestCase
     assert Day.new(Date.new(2026, 6, 10), 8, 8).completed?
     assert_not Day.new(Date.new(2026, 6, 10), 4, 8).completed?
   end
+
+  test "mood defaults to nil" do
+    assert_nil Day.new(Date.new(2026, 6, 10), 4, 8).mood
+  end
+
+  test "mood returns the mood given at initialization" do
+    mood = Mood.new(level: :great)
+
+    assert_equal mood, Day.new(Date.new(2026, 6, 10), 4, 8, mood).mood
+  end
 end
