@@ -13,7 +13,11 @@ module Statistics::Searchable
     @from = params[:from]&.to_date || user.activities.minimum(:started_at)&.to_date || Date.current
     @to = params[:to]&.to_date || user.activities.maximum(:started_at)&.to_date || Date.current
 
-    progress = User::Progress.between(user, @from, @to).activities
+    User::Progress.between(user, @from, @to).activities
+  end
+
+  def filtered_moods(user)
+    user.moods.where(date: @from..@to).order(:date)
   end
 
   def single_day?

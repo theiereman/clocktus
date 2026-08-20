@@ -52,6 +52,12 @@
       .mb-6{ data: { controller: "chart-legend" } }
         = line_chart @hours_per_category_over_time, legend: :bottom, dataset: { tension: 0.3 }
 
+    - unless @mood_over_time.empty?
+      #mood-over-time
+        %h2.mb-4= t(".mood_over_time")
+        .mb-6{ data: { controller: "mood-chart", mood_chart_labels_value: @mood_level_labels } }
+          = line_chart @mood_over_time, legend: false, colors: [ "#ffb900" ], dataset: { tension: 0.3 }, library: { scales: { y: { min: 0, max: @mood_level_labels.size - 1 } } }
+
     #activities-over-time-per-category
       %h2.mb-4= t(".activities_over_time_per_category")
       .my-6.grid.grid-cols-1.gap-6{ class: "sm:grid-cols-2 lg:grid-cols-3" }

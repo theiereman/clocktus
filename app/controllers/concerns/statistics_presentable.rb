@@ -16,4 +16,9 @@ module StatisticsPresentable
       @top_categories = presenter.top_table
       @hours_per_category_over_time = HoursPerCategoryPresenter.present(activities)
     end
+
+    def present_mood_statistics_for(user, moods)
+      @mood_over_time = MoodOverTimePresenter.present(moods)
+      @mood_level_labels = Mood.levels.sort_by { |_, value| value }.map { |level, _| t("activities.mood_form.levels.#{level}") }
+    end
 end

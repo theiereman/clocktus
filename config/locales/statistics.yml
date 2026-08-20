@@ -11,6 +11,7 @@ en:
       days_completed: Days completed
       activities_per_category: Number of hours per category
       activities_over_time: Hours spent over time
+      mood_over_time: Mood over time
       activities_over_time_per_category: Hours spent over time by category
       table:
         category: Category
@@ -39,6 +40,7 @@ fr:
       days_completed: Jours complétés
       activities_per_category: Nombre d'heures par catégorie
       activities_over_time: Heures passées au cours du temps
+      mood_over_time: Évolution de l'humeur
       activities_over_time_per_category: Heures passées au cours du temps par catégorie
       table:
         category: Catégorie

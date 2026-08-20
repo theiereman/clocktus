@@ -30,4 +30,32 @@ class StatisticsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "renders the mood evolution chart with only the moods within the selected range" do
+    users(:one).moods.create!(date: Date.new(2026, 6, 10), level: :great)
+    users(:one).moods.create!(date: Date.new(2026, 7, 1), level: :terrible)
+
+    get statistics_url, params: { from: "2026-06-01", to: "2026-06-30" }
+
+    assert_response :success
+    assert_select "#mood-over-time"
+    assert_match "2026-06-10", response.body
+    assert_no_match(/2026-07-01/, response.body)
+  end
+
+  test "hides the mood evolution chart when the user has no moods in range" do
+    get statistics_url, params: { from: "2026-06-01", to: "2026-06-30" }
+
+    assert_response :success
+    assert_select "#mood-over-time", false
+  end
+
+  test "hides the mood evolution chart when filtering on a single day" do
+    users(:one).moods.create!(date: Date.new(2026, 6, 10), level: :great)
+
+    get statistics_url, params: { from: "2026-06-10", to: "2026-06-10" }
+
+    assert_response :success
+    assert_select "#mood-over-time", false
+  end
 end
