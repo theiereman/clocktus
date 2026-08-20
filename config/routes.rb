@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post "mark_night_as_sleep(/:date)", to: "activities#mark_night_as_sleep", as: :mark_night_as_sleep
 
   resources :comments, only: %i[ create ]
+  resources :moods, only: %i[ create ]
 
   namespace :activity do
     resources :categories, only: %i[ create update destroy ]

@@ -5,7 +5,8 @@ class ActivitiesController < ApplicationController
   def index
     @date = @activity.started_at.to_date
     @progress = DailyProgressPresenter.new(User::Progress.for_the_day(Current.user, @date))
-    @comment = Comment.find_or_initialize_for(Current.user, @date)
+    @comment = Current.user.comments.find_or_initialize_by(date: @date)
+    @mood = Current.user.moods.find_or_initialize_by(date: @date)
   end
 
   def create

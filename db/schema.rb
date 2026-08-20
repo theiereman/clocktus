@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_19_141934) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_20_075211) do
   create_table "activities", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
@@ -64,6 +64,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_19_141934) do
     t.index ["user_id"], name: "index_magic_links_on_user_id"
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.date "date"
+    t.integer "level"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"
@@ -97,6 +106,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_19_141934) do
   add_foreign_key "activity_comments", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "magic_links", "users"
+  add_foreign_key "moods", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "user_profile_links", "users"
 end

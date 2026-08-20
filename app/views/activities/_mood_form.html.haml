@@ -1,0 +1,11 @@
+-# locals: (date:, mood:)
+
+.cotnainer
+  = turbo_frame_tag "mood_form" do
+    %h2.mb-2= t(".title")
+    .flex.gap-2
+      = form_with model: mood, url: moods_path, method: :post do |f|
+        = f.hidden_field :date, value: date
+        - Mood.levels.each_key do |level|
+          = f.button name: "mood[level]", value: level, title: t(".levels.#{level}"), class: "rounded-full p-3 #{'active' if mood.level == level}", data: { controller: "press", action: "pointerdown->press#press pointerup->press#release pointercancel->press#release pointerleave->press#release" } do
+            = lucide_icon mood_icon_for(level), class: "size-6"

@@ -11,6 +11,9 @@ en:
       comment:
         one: comment
         other: comments
+      mood:
+        one: mood
+        other: moods
       user: user
     attributes:
       user:
@@ -29,6 +32,9 @@ en:
         color: Color
       comment:
         body: Note
+        date: Date
+      mood:
+        level: Mood
         date: Date
     errors:
       models:
@@ -54,6 +60,9 @@ fr:
       comment:
         one: commentaire
         other: commentaires
+      mood:
+        one: humeur
+        other: humeurs
       user: utilisateur
     attributes:
       user:
@@ -72,6 +81,9 @@ fr:
         color: Couleur
       comment:
         body: Note
+        date: Date
+      mood:
+        level: Humeur
         date: Date
     errors:
       models:

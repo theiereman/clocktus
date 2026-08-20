@@ -1,0 +1,23 @@
+# Mood picker for a day, shown at the bottom of the day view.
+en:
+  activities:
+    mood_form:
+      title: Mood
+      saved: Mood saved
+      levels:
+        great: Great
+        good: Good
+        mid: Okay
+        bad: Bad
+        terrible: Terrible
+fr:
+  activities:
+    mood_form:
+      title: Humeur
+      saved: Humeur enregistrée
+      levels:
+        great: Super
+        good: Bien
+        mid: Moyenne
+        bad: Mauvaise
+        terrible: Terrible

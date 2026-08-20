@@ -7,6 +7,7 @@
   = render "date_navigation"
 
 .space-y-6
+  = render "mood_form", date: @date, mood: @mood
   .grid.grid-cols-2.gap-4.text-lg
     - @categories.each do |category|
       = form_for :activity, url: activities_path, method: :post do |form|

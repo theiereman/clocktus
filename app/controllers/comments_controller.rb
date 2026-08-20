@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.find_or_initialize_for(Current.user, comment_params[:date])
+    @comment = Current.user.comments.find_or_initialize_by(date: comment_params[:date])
 
     if comment_params[:body].blank?
       if @comment.persisted?
